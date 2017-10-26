@@ -1,0 +1,5 @@
+{
+  "mongodb": {
+    "uri": "localhost:27017/agile-test"
+  }
+}

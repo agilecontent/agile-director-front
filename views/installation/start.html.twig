@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    {#<link rel="icon" href="../../favicon.ico">#}
+    <title>AgileSearch starter</title>
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/jumbotron.css" rel="stylesheet">
+    <link href="assets/prism.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="/">Home</a></li>
+            {#<li role="presentation"><a href="http://app.itemsapi.com" target="_blank">Dashboard</a></li>#}
+            {#<li role="presentation"><a href="https://itemsapi.readme.io" target="_blank">Documentation</a></li>#}
+          </ul>
+        </nav>
+        <h3 class="text-muted">AgileSearcher starter</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>AgileSearch Starter</h1>
+        <p class="lead">This is the system designed for quality catalogs / classifieds / recommendations / marketplaces</p>
+        {#<p class="lead">Creating backend will take you no more than 5 minutes</p>#}
+        {#<p><a class="btn btn-lg btn-success" href="#first-step" role="button">Create application</a></p>#}
+      </div>
+
+      <div class="row marketing">
+
+
+{#glyphicon glyphicon-info-sign#}
+{#glyphicon glyphicon-exclamation-sign#}
+
+        {% if elasticsearch_status == 200 %}
+        <div class="alert alert-success" role="alert">
+          <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          Your server environment seems to be prepared properly
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          There are some issues with elasticsearch. Please run elasticsearch on your server and refresh page.
+        </div>
+        {% endif %}
+
+        {% if elasticsearch_status == 200 %}
+        Welcome to very short ItemsAPI Starter installation process!<br />
+        After finishing below configuration you'll get auto-generated web application.
+
+        (Step: {{ step }})
+
+        {% if step == 1 %}
+        <h3 id="first-step">1. First step</h3>
+        <p>Put your collection configuration here (i.e. copy and paste <a href="https://raw.githubusercontent.com/itemsapi/itemsapi-example-data/master/collections/cities.json" target="_blank">that</a> content)</p>
+        <form method="POST" action="/add-collection">
+          <textarea class="form-control" rows="3" style="height:200px" name="collection"></textarea>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        {% else %}
+        {% endif %}
+
+        {% if step <= 2 %}
+        <h3>1. First step</h3>
+        <form method="POST" action="/add-data">
+          <p>Put link with json data here (i.e. copy that link <a href="https://raw.githubusercontent.com/itemsapi/itemsapi-example-data/master/items/movies-processed.json" target="_blank">that</a> here)</p>
+          <div class="form-group">
+            <input type="text" class="form-control" name="url" value="{{ data_url }}" placeholder="url with json data">
+          </div>
+          <p>or raw json data</p>
+          <div class="form-group">
+            <textarea class="form-control" rows="3" name="json" placeholder="or your json data"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        {% else %}
+        <h3 style="color: #5cb85c;">1. First step</h3>
+        {% endif %}
+
+
+        {% if step == 3 %}
+        <h3>2. Your backend is ready to go</h3>
+        <p>Your app is ready to go!</p>
+
+        <a href="/" target="_blank" class="btn btn-success">Open app</a>
+        <a href="/admin" target="_blank" class="btn btn-info">Open admin</a>
+
+
+        <table class="table table-striped" style="width: 50%; margin-top: 10px;">
+          <tr>
+            <td>Login</td>
+            <td>admin</td>
+          </tr>
+          <tr>
+            <td>Password</td>
+            <td>itemsapi</td>
+            {#<td><b>itemsapi</b></td>#}
+          </tr>
+        </table>
+
+
+        {#<p>Your backend is ready to go. There are few your endpoints here</p>
+
+        {% set itemId = items.data.items[0].id %}
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Endpoint</th>
+              <th>Method</th>
+              <th>Desc</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><a href="/api/v1/items/{{ name }}" target="_blank">/api/v1/items/{{ name }}</a></td>
+            <td>GET</td>
+            <td>search items</td>
+          </tr>
+          <tr>
+            <td><a href="/api/v1/items/{{ name }}/{{ itemId }}" target="_blank">/api/v1/items/{{ name }}/:id</a></td>
+            <td>GET</td>
+            <td>get one item</td>
+          </tr>
+          <tr>
+            <td><a href="/api/v1/items/{{ name }}" target="_blank">/api/v1/items/{{ name }}</a></td>
+            <td>POST</td>
+            <td>create item or items</td>
+          </tr>
+          <tr>
+            <td><a href="/api/v1/items/{{ name }}/{{ itemId }}/similar" target="_blank">/api/v1/items/{{ name }}/:id/similar</a></td>
+            <td>GET</td>
+            <td>similar items</td>
+          </tr>
+          <tr>
+            <td><a href="/api/v1/items/{{ name }}/_search" target="_blank">/api/v1/items/{{ name }}/_search</a></td>
+            <td>POST</td>
+            <td>elasticsearch endpoint</td>
+          </tr>
+          </tbody>
+        </table>
+
+        It is ideal for single page application like angular or react and for mobile apps (android or iOS) <br />
+        For more information about REST endpoints - let's try <a href="https://itemsapi.readme.io" target="_blank">documentation</a>
+
+
+        <h4>Generated schema!</h4>
+
+        <div style="overflow-y: scroll; height:300px;">
+          <pre><code class="language-js">{{ collection.schema | debug }}</code></pre>
+        </div>
+
+        <br /><br/ >
+
+        <h4>Generated aggregations!</h4>
+
+        <div style="overflow-y: scroll; height:300px;">
+        <pre><code class="language-js">{{ collection.aggregations | debug }}</code></pre>
+        </div>
+
+        <br />
+        If you know how to improve or simplify that generator - or if you have an issue - write here <a href="https://github.com/itemsapi/itemsapi-starter/issues" target="_blank">https://github.com/itemsapi/itemsapi-starter/issues</a><br />
+        <br /><br/ >#}
+
+        {#<div id="banner-share">
+          <iframe src="https://ghbtns.com/github-btn.html?user=itemsapi&amp;repo=itemsapi&amp;type=star&amp;count=true&amp;size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+
+          <a href="https://twitter.com/share" class="twitter-share-button" data-size="large">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>#}
+        {% else %}
+        <h3>2. Your web application will be ready soon!</h3>
+        <p>Usually it takes weeks or months to create search application with another solutions.
+        With ItemsAPI it's easy and fast</p>
+        {% endif %}
+
+        {% endif %}
+
+      </div>
+
+
+      {% block content %}
+      {% endblock %}
+
+      <footer class="footer">
+        <p>&copy; 2015-2017 <a href="https://www.itemsapi.com" target="_blank">ItemsAPI</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+    <script src="assets/prism.js"></script>
+  </body>
+</html>

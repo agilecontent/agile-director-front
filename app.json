@@ -1,0 +1,21 @@
+{
+    "name": "starter",
+    "description": "open source full text search backend",
+    "success_url": "/",
+    "addons": [{
+      "plan": "bonsai:sandbox-10",
+      "options": {
+        "version": "1.7"
+      }
+    }, "redistogo", "mongolab"],
+    "env": {
+      "DATA_URL": {
+        "description": "URL to data in JSON",
+        "value": "",
+        "required": false
+      }
+    },
+    "logo": "https://pbs.twimg.com/profile_images/776731186026704896/t2BmYaxc.jpg",
+    "repository": "https://github.com/agile/starter",
+    "keywords": ["itemsapi", "elasticsearch", "node.js", "restful search backend", "marketplace", "vertical search engine"]
+}

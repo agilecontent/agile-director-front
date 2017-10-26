@@ -1,0 +1,203 @@
+{% extends "layout.html.twig" %}
+
+{% macro form2(form, options = {}) %}
+{% endmacro %}
+
+
+{% block content %}
+<section class="content">
+
+
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Collection schema</h3>
+        </div>
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tbody>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Store</th>
+              <th>Index</th>
+              <th>Is indexed</th>
+            </tr>
+
+            {% for key, val in collection.schema %}
+            <tr>
+              <td>{{ key }}</td>
+              <td>{{ val.type }}</td>
+              <td>{{ val.store }}</td>
+              <td>{{ val.index }}</td>
+              {% if properties[key]['index'] == val.index and properties[key]['store'] == val.store %}
+                <td style="color: green;">True</td>
+              {% else %}
+                <td style="color: red;">False</td>
+              {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+    <div class="col-xs-4">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Aggregations</h3>
+        </div>
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tbody>
+            <tr>
+              <th>Name</th>
+              <th>Field</th>
+              <th>Type</th>
+              <th>Size</th>
+              <th>Title</th>
+              <th>Is slug</th>
+              <th>Position</th>
+              <th>Delete</th>
+            </tr>
+
+            {#{{ collection.aggregations | debug }}#}
+            {#{{ collection.aggregations | sortBy | debug }}#}
+
+            {% for val in (aggregations | sortObject('position', 'desc')) %}
+            <tr>
+              {#<td>{{ key }}</td>#}
+              <td>{{ val.key }}</td>
+              <td>{{ val.field }}</td>
+              <td>{{ val.type }}</td>
+              <td>{{ val.size }}</td>
+              <td>{{ val.title }}</td>
+              {% if in_array(val.key, collection.slugs) %}
+                <td style="color: green;">enabled</td>
+              {% else %}
+                <td></td>
+              {% endif %}
+              <td>{{ val.position }}</td>
+              <td><a href="/admin/aggregations/delete/{{ val.key }}"><i class="fa fa-fw fa-remove"></i></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+    <div class="col-xs-4">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">Sortings</h3>
+        </div>
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tbody>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Field</th>
+              <th>Order</th>
+              <th>Title</th>
+              <th>Default</th>
+              <th>Delete</th>
+            </tr>
+
+            {% for key, val in collection.sortings %}
+            <tr>
+              <td>{{ key }}</td>
+              <td>{{ val.type }}</td>
+              <td>{{ val.field }}</td>
+              <td>{{ val.order }}</td>
+              <td>{{ val.title }}</td>
+              {% if collection.defaults.sort == key %}
+                <td style="color: green;">True</td>
+              {% else %}
+                <td><a href="/admin/sortings/set-default/{{ key }}">set</a></td>
+              {% endif %}
+              <td><a href="/admin/sortings/delete/{{ key }}"><i class="fa fa-fw fa-remove"></i></a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- /.box -->
+    </div>
+  </div>
+
+
+  <!-- Horizontal Form -->
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Edit collection (advanced)</h3>
+        </div>
+
+        <form class="form-horizontal" action="" method="POST">
+          <div class="box-body">
+            <textarea id="codemirror" name="row" style="width: 100%; height: 1000px;">
+              {{ collection | stringify }}
+            </textarea>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-info pull-right" style="margin-left: 5px;">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Reindexing (it can take long)</h3>
+        </div>
+
+        <div class="box-body">
+          <a href="/admin/collections/reindex" type="button" class="btn btn-default btn-block">Reindex collection</a>
+          <a href="/admin/slugs/reindex" type="button" class="btn btn-default btn-block">Reindex slugs</a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="col-md-6">
+      <!-- Horizontal Form -->
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Show collection (advanced)</h3>
+        </div>
+        <div class="box-body">
+          {#<p class="lead">Lead to emphasize importance</p>#}
+          <pre>
+            {{ collection | stringify }}
+          </pre>
+        </div>
+
+
+        <div class="box-header with-border">
+          <h3 class="box-title">Show mapping (advanced)</h3>
+        </div>
+        <div class="box-body">
+          {#<p class="lead">Lead to emphasize importance</p>#}
+          <pre>
+            {#{{ properties | stringify }}#}
+            {{ mapping | stringify }}
+          </pre>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+{% endblock %}

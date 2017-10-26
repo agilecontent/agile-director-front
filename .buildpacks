@@ -1,0 +1,6 @@
+heroku/python
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+https://github.com/hugovelias/heroku-buildpack-youtube-dl.git
+heroku/nodejs
+
+

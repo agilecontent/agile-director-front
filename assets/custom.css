@@ -1,0 +1,160 @@
+ul.subnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    padding: 8px 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+
+}
+
+.subnav li {
+    float: left;
+    margin-right: 10px;
+}
+
+.subnav li a {
+    /*display: block;*/
+    /*color: white;*/
+    text-align: center;
+    /*padding: 14px 16px;*/
+    text-decoration: none;
+}
+
+/*.subnav li a:hover {
+    background-color: #111;
+}*/
+
+video {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.query-builder .rule-container .rule-operator-container {
+    display: none;
+}
+
+.query-builder .rule-value-container {
+    border: none;
+}
+
+.btn-group.group-conditions {
+    visibility: hidden;
+}
+
+.query-builder .rules-list > *::before, .query-builder .rules-list > *::after {
+    display: none;
+}
+
+.query-builder .rules-list {
+    padding: 0;
+}
+
+.query-builder .rules-group-container {
+    margin: 0;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.table-wrapper {
+    height: 330px;
+    overflow: auto;
+}
+
+.syntaxis {
+    display: none;
+}
+
+.semantics {
+    display: none;
+}
+
+.navbar-default {
+    background-color: white;
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+    text-indent: -9999px;
+    height: 70px;
+}
+
+.navbar-brand img {
+    height: 60px !important;
+}
+
+.navbar {
+    min-height: 70px;
+}
+
+html h1, h2, h3, h4, p, a {
+    font-family: "Merriweather", serif !important;
+}
+
+html h1 {
+    font-weight: 400 !important;
+    font-size: 24px !important;
+}
+
+html a {
+    color: #7f9f1e !important;
+}
+
+.btn-info.focus, .btn-info:focus, .btn-info.active, .btn-info:active, .btn-info, .btn-info:hover {
+    background-color: #f2f2f2;
+    background: #f2f2f2;
+    border: #cccccc 1px solid;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    background-color: white;
+}
+
+.query-builder .rules-group-container {
+    background: white;
+    border: #cccccc 1px solid;
+    border-radius: 0px;
+    padding-bottom: 4px;
+}
+
+.form-control:focus {
+    border: #cccccc 1px solid;
+}
+
+.input-group-btn {
+    padding-left: 1px;
+}
+
+.input-group-btn .glyphicon {
+    color: black;
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:active {
+    outline: none;
+}
+
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open > .dropdown-toggle.btn-info.focus, .open > .dropdown-toggle.btn-info:focus, .open > .dropdown-toggle.btn-info:hover {
+    background-color: #f2f2f2;
+    background: #f2f2f2;
+    border: #cccccc 1px solid;
+    outline: none;
+}
+
+html table a {
+    color: black !important;
+}
+
+html table a:hover, html table a:focus {
+    text-decoration: none;
+}

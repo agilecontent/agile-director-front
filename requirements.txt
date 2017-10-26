@@ -1,0 +1,1 @@
+git+git://github.com/agermanidis/autosub.git

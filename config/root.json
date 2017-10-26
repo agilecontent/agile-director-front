@@ -1,0 +1,52 @@
+{
+  "server": {
+    "port": 4000,
+    "host": "0.0.0.0",
+    "logger": false,
+    "logging_level": "info"
+  },
+  "elasticsearch": {
+    "host": "127.0.0.1:9200",
+    "selector": "roundRobin"
+  },
+  "mongodb": {
+    "uri": "localhost:27017/agile-starter"
+  },
+  "auth": {
+    "memory": {
+      "username": "admin",
+      "password": "admin",
+      "enabled": true
+    },
+    "github" : {
+      "clientID" : "",
+      "clientSecret": "",
+      "scope": ["user:email"],
+      "callbackURL": "http://localhost:4000/auth/github/callback"
+    },
+    "linkedin" : {
+      "clientID" : "",
+      "clientSecret": "",
+      "scope": ["r_basicprofile", "r_emailaddress"],
+      "profileFields": ["id", "first-name", "last-name", "email-address", "headline", "picture-url"],
+      "callbackURL": "http://localhost:4000/auth/linkedin/callback"
+    },
+    "facebook" : {
+      "clientID" : "",
+      "clientSecret": "",
+      "callbackURL": "http://localhost:4000/auth/facebook/callback",
+      "scope": ["public_profile", "email"],
+      "profileFields": ["id", "displayName", "email", "birthday", "first_name", "last_name", "middle_name", "gender", "link", "picture.type(large)"]
+    }
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "auth_pass": ""
+  },
+  "allowed_ips": ["127.0.0.1"],
+  "cookie": {
+    "maxAge": 86400000,
+    "domain": ""
+  }
+}
