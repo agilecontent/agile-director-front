@@ -1,0 +1,446 @@
+.statusBar {
+  position: fixed;
+  top: 44px;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  padding: 5px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  font-weight: 700;
+  height: 22px;
+}
+
+.assets {
+  padding-bottom: 55px;
+}
+
+.main-content.assets-content {
+  margin-top: 66px;
+}
+
+.assets .packery-sizer, .assets .packery-object {
+  width: 50%;
+  height: 50vw;
+  float: left;
+}
+
+.packery-object.is-dragging {
+  z-index: 10;
+}
+
+.assets article {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 5px 0 #d1d1d1;
+  display: block;
+  position: relative;
+  color: inherit;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.assets article img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.assets article header {
+  opacity: 1;
+  visibility: visible;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  max-height: 50%;
+  padding: 0px 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.assets article:hover header {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate(0px, 30px);
+  -moz-transform: translate(0px, 30px);
+  -ms-transform: translate(0px, 30px);
+  -o-transform: translate(0px, 30px);
+  transform: translate(0px, 30px);
+}
+
+.assets article header h1 {
+  margin: 10px 0px;
+  text-shadow: 0px 1px 0px #222;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.assets article.disabled div.layer {
+  opacity: 0.8;
+  background: black;
+}
+
+.assets article div.layer {
+  display: table;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+}
+
+div.assets:not(.packed), div.assets:not(.packed) article header, .assets:not(.packed) article:hover aside, .assets:not(.packed) article:hover aside .content {
+  visibility: hidden;
+}
+
+.assets article div.layer div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.assets article div.layer a {
+  color: white;
+  font-size: 16px;
+}
+
+.assets article:hover div.layer a {
+  color: black;
+  opacity: 0.5;
+}
+
+.assets article.disabled:hover div.layer a {
+  color: white;
+}
+
+.assets article aside {
+  opacity: 0;
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition-delay: 0.2s;
+  -o-transition-delay: 0.2s;
+  -ms-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+}
+
+.assets article:hover aside {
+  opacity: 1;
+  visibility: visible;
+}
+
+.assets article h4 {
+  display: none !important;
+}
+
+.assets article aside div.coverall {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.assets article aside div.content {
+  opacity: 0;
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  max-height: 80%;
+  padding: 10px;
+  background: #fff;
+  color: #565656;
+  webkit-transform: translate(0px, 30px);
+  -moz-transform: translate(0px, 30px);
+  -ms-transform: translate(0px, 30px);
+  -o-transform: translate(0px, 30px);
+  transform: translate(0px, 30px);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transition-delay: 0.3s;
+  -moz-transition-delay: 0.3s;
+  -o-transition-delay: 0.3s;
+  -ms-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+  margin: 0;
+}
+
+.assets article aside div.content p {
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+.assets article:hover aside div.content {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate(0px, 0px);
+  -moz-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  -o-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+.assets article aside div.content ul.meta-data {
+  font-size: 10px;
+  margin-left: 0;
+  padding: 0;
+  list-style-type: none;
+  padding-top: 5px;
+}
+
+.assets article aside div.content ul.meta-data li {
+  display: inline-block;
+}
+
+.assets article aside div.content ul.meta-data li.author {
+  font-style: italic;
+}
+
+.assets article aside div.content ul.meta-data .fa-li {
+  position: static;
+}
+
+.assets article aside .date {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: block;
+  color: white;
+  -webkit-transform: translate(10px, 0px);
+  -moz-transform: translate(10px, 0px);
+  -ms-transform: translate(10px, 0px);
+  -o-transform: translate(10px, 0px);
+  transform: translate(10px, 0px);
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-transition-delay: 0.5s;
+  -moz-transition-delay: 0.5s;
+  -o-transition-delay: 0.5s;
+  -ms-transition-delay: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.assets article:hover aside .date {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: translate(0px, 0px);
+  -moz-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  -o-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+.assets article aside .date .clock {
+  font-size: 24px;
+  line-height: 1;
+  padding-left: 5px;
+  border-left: 1px solid;
+  margin-left: 5px;
+  display: block;
+  float: right;
+}
+
+.assets article aside span.fa.fa-clock-o {
+  padding-right: 5px;
+}
+
+.assets article aside .date .date-wrap {
+  display: block;
+  float: right;
+}
+
+.assets article aside .date .date-wrap .day {
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.assets article aside .date .date-wrap .month {
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.assets article.tecnologia aside, .assets article.tecnologia h4 {
+  background-color: #AED13F;
+  background-color: rgba(174, 209, 63, 0.8);
+}
+
+.assets article.entretenimiento aside, .assets article.entretenimiento h4 {
+  background-color: #d23ed0;
+  background-color: rgba(210, 62, 208, 0.8);
+}
+
+.assets article.motor aside, .assets article.motor h4 {
+  background-color: #d13f3f;
+  background-color: rgba(209, 63, 63, 0.8);
+}
+
+.assets article.politica aside, .assets article.politica h4 {
+  background-color: #ffa800;
+  background-color: rgba(255, 168, 0, 0.8);
+}
+
+.assets article.ciencia aside, .assets article.ciencia h4 {
+  background-color: #50d13f;
+  background-color: rgba(80, 209, 63, 0.8);
+}
+
+.assets article.social aside, .assets article.social h4 {
+  background-color: #ffea01;
+  background-color: rgba(255, 234, 1, 0.8);
+}
+
+.assets article.cultura aside, .assets article.cultura h4 {
+  background-color: #995c37;
+  background-color: rgba(153, 92, 55, 0.8);
+}
+
+.assets article.internacional aside, .assets article.internacional h4 {
+  background-color: #5ecee6;
+  background-color: rgba(94, 206, 230, 0.8);
+}
+
+.assets article.deportes aside, .assets article.deportes h4 {
+  background-color: #126ae0;
+  background-color: rgba(18, 106, 224, 0.8);
+}
+
+.assets article.economia aside, .assets article.economia h4 {
+  background-color: #c9c6c6;
+  background-color: rgba(201, 198, 198, 0.8);
+}
+
+.assets article.gente aside, .assets article.gente h4 {
+  background-color: #740970;
+  background-color: rgba(116, 9, 112, 0.8);
+}
+
+.assets article.television aside, .assets article.television h4 {
+  background-color: #0bf0f8;
+  background-color: rgba(11, 240, 248, 0.8);
+}
+
+@media (min-width: 480px) {
+  .assets .packery-sizer, .assets .packery-object {
+    width: 33.333%;
+    height: 33.333vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .statusBar {
+    font-size: 14px;
+    height: 24px;
+  }
+
+  .main-content.assets-content {
+    margin-top: 68px;
+  }
+
+  .assets .packery-sizer, .assets .packery-object {
+    width: 25%;
+    height: 25vw;
+  }
+
+  .assets article header h1 {
+    font-size: 14px;
+  }
+
+  .assets article aside div.content p {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .assets article aside .date .date-wrap .day {
+    font-size: 14px;
+  }
+
+  .assets article aside .date .date-wrap .month {
+    font-size: 14px;
+  }
+
+  .assets article aside .date .clock {
+    font-size: 30px;
+  }
+
+  .assets article div.layer a {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 960px) {
+  .statusBar {
+    font-size: 14px;
+    height: 24px;
+  }
+
+  .main-content.assets-content {
+    margin-top: 68px;
+  }
+
+  .assets .packery-sizer, .assets .packery-object {
+    width: 20%;
+    height: 20vw;
+  }
+
+  .assets article header h1 {
+    font-size: 16px;
+  }
+
+  .assets article aside div.content p {
+    font-size: 16px;
+  }
+
+  .assets article aside .date .date-wrap .day {
+    font-size: 16px;
+  }
+
+  .assets article aside .date .date-wrap .month {
+    font-size: 16px;
+  }
+
+  .assets article aside .date .clock {
+    font-size: 40px;
+  }
+
+  .assets article div.layer a {
+    font-size: 20px;
+  }
+}

@@ -1,24 +1,10 @@
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12" style="padding-left: 0;">
-                <div id="custom-search-input">
-                    <form action="/catalog" method="GET">
-                        <div class="input-group col-md-12">
-                            <input type="text" id="main_query" class="form-control input-lg" name="query"
-                                   value="{{ query }}" placeholder="Search items.."/>
-            <span class="input-group-btn">
-              <button class="btn btn-info btn-lg" type="button">
-                  <i class="glyphicon glyphicon-search"></i>
-              </button>
-            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+{% if is_ajax == false %}
+    {% extends "basic/layout.html.twig" %}
+    {% block title %}{% endblock %}
+    {% block description %}{% endblock %}
+{% endif %}
 
+{% block content %}
     <div class="main-content assets-content">
         <div class="assets">
             <div class="packery-container">
@@ -26,12 +12,12 @@
                     <div class="item draggable">
                         <article class="{{ item.channelName }}">
                             <img src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}"
-                                 alt="{{ item.name }}">
+                                 alt="{{ item.name | truncate(10, true) }}">
                             <h4>{{ item.channelName }}</h4>
                             <aside>
                                 <div class="coverall"/>
                                 <div class="content">
-                                    <p class="description">{{ item.description }}</p>
+                                    <p class="description">{{ item.description | truncate(10, true) }}</p>
                                     <ul class="icon-ul meta-data">
                                         <li class="channel"><i class="icon-li icon icon-tag"></i>{{ item.channelName }}
                                         </li>
@@ -50,7 +36,7 @@
                                 </div>
                             </aside>
                             <header>
-                                <h1>{{ item.name }}</h1>
+                                <h1>{{ item.name | truncate(10, true) }}</h1>
                             </header>
                             <div class="layer">
                                 <div>
@@ -65,7 +51,6 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
 
 
