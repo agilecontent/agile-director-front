@@ -1,6 +1,6 @@
 'use strict';
 
-var server = require('agilesearch');
+var server = require('agile-director-back');
 var ItemsAPI = require('itemsapi-node');
 var Promise = require('bluebird');
 var request = Promise.promisifyAll(require('request'));
@@ -13,7 +13,7 @@ var colors = require('colors')
 var figlet = require('figlet')
 var mongoose = require('./config/mongoose')
 
-console.log(figlet.textSync('agilesearchdemo'))
+console.log(figlet.textSync('VIDClouddemo'))
 console.log();
 
 var listeners = require('./src/listeners/index')
