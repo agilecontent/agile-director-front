@@ -17,5 +17,5 @@
     },
     "logo": "https://pbs.twimg.com/profile_images/776731186026704896/t2BmYaxc.jpg",
     "repository": "https://github.com/agile/starter",
-    "keywords": ["itemsapi", "elasticsearch", "node.js", "restful search backend", "marketplace", "vertical search engine"]
+    "keywords": ["elasticsearch", "node.js", "restful search backend", "marketplace", "vertical search engine"]
 }
