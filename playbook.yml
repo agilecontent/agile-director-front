@@ -7,9 +7,8 @@
   vars:
     user: root
     mongodb_version: 3.0.12
-    #app_git: git@github.com:itemsapi/starter.git
-    app_git: https://github.com/itemsapi/starter.git
-    app_dir: /var/www/itemsapi-starter
+    app_git: https://github.com/agilesearch/starter.git
+    app_dir: /var/www/agilesearch-starter
 
   handlers:
     - name: restart mongodb
@@ -99,13 +98,13 @@
     - name: Install global bower
       npm: name=bower global=yes
 
-    - name: Install itemsapi-cli
-      npm: name=itemsapi-cli global=yes
+    - name: Install agilesearch-cli
+      npm: name=NODE-cli global=yes
 
-    - name: Creates directory for itemsapi cloud
+    - name: Creates directory for agilesearch cloud
       file: path={{ app_dir }} state=directory mode=0775
 
-    - name: checkout itemsapi cloud
+    - name: checkout NODE cloud
       sudo: no
       git: repo={{ app_git }} dest={{ app_dir }} accept_hostkey=True force=yes
 

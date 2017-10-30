@@ -127,7 +127,7 @@ module.exports = function(app) {
     return statusHelper.elasticsearch(url)
     .then(function(result) {
 
-      result.data_url = process.env.DATA_URL || 'https://raw.githubusercontent.com/itemsapi/itemsapi-example-data/master/items/movies-processed.json';
+      result.data_url = process.env.DATA_URL || '';
       return res.render('installation/start', result);
     })
   })

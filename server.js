@@ -1,7 +1,7 @@
 'use strict';
 
 var server = require('agile-director-back');
-var ItemsAPI = require('itemsapi-node');
+var node = require('itemsapi-node');
 var Promise = require('bluebird');
 var request = Promise.promisifyAll(require('request'));
 var _ = require('lodash');
@@ -77,7 +77,7 @@ app.all('*', function(req, res, next) {
       req.settings = dynamic_config
       res.locals.settings = dynamic_config
     }
-    var client = new ItemsAPI('http://localhost:' + config.server.port + '/api/v1', req.name)
+    var client = new node('http://localhost:' + config.server.port + '/api/v1', req.name)
     req.client = client;
     //nunenv.addGlobal('step', req.step)
     //nunenv.addGlobal('name', req.name)
