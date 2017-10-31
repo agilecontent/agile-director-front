@@ -10,15 +10,15 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var LinkedinStrategy = require('passport-linkedin').Strategy;
 var GithubStrategy = require('passport-github').Strategy;
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser(function (user, done) {
     done(null, user);
   });
 
-  passport.deserializeUser(function(id, done) {
+  passport.deserializeUser(function (id, done) {
     done(null, id)
   });
 
@@ -29,18 +29,18 @@ module.exports = function(app) {
    * if not found then also check `in-memory` login / password
    */
   passport.use(new LocalStrategy(
-    function(username, password, done) {
+    function (username, password, done) {
       User.findByUsername(username, function (err, user) {
         if (err) {
-          return done(null, false, { message: err })
+          return done(null, false, {message: err})
         }
         if (!user) {
           // login by inmemory credentials
           if (!config.auth.memory || config.auth.memory.enabled === false) {
-            return done(null, false, { message: 'Incorrect credentials' })
+            return done(null, false, {message: 'Incorrect credentials'})
           }
           if (username !== config.auth.memory.username || password !== config.auth.memory.password) {
-            return done(null, false, { message: 'Incorrect credentials' })
+            return done(null, false, {message: 'Incorrect credentials'})
           }
 
           return done(null, {
@@ -48,12 +48,12 @@ module.exports = function(app) {
             is_admin: true
           })
         } else {
-          user.authenticate(password, function(err, user) {
+          user.authenticate(password, function (err, user) {
             if (err) {
-              return done(null, false, { message: err })
+              return done(null, false, {message: err})
             }
             if (!user) {
-              return done(null, false, { message: 'Incorrect password' })
+              return done(null, false, {message: 'Incorrect password'})
             }
             return done(null, user)
           })
@@ -68,15 +68,15 @@ module.exports = function(app) {
       clientSecret: config.auth.facebook.clientSecret,
       callbackURL: config.auth.facebook.callbackURL,
       profileFields: config.auth.facebook.profileFields
-    }, function(accessToken, refreshToken, profile, done) {
-      process.nextTick(function() {
+    }, function (accessToken, refreshToken, profile, done) {
+      process.nextTick(function () {
         userService.updateFacebookUser(accessToken, refreshToken, profile)
-        .then(function(user) {
-          done(null, user)
-        })
-        .catch(function(err) {
-          done(err)
-        })
+          .then(function (user) {
+            done(null, user)
+          })
+          .catch(function (err) {
+            done(err)
+          })
       })
     }))
   }
@@ -87,15 +87,15 @@ module.exports = function(app) {
       consumerSecret: config.auth.linkedin.clientSecret,
       callbackURL: config.auth.linkedin.callbackURL,
       profileFields: config.auth.linkedin.profileFields
-    }, function(accessToken, refreshToken, profile, done) {
-      process.nextTick(function() {
+    }, function (accessToken, refreshToken, profile, done) {
+      process.nextTick(function () {
         userService.updateLinkedinUser(accessToken, refreshToken, profile)
-        .then(function(user) {
-          done(null, user)
-        })
-        .catch(function(err) {
-          done(err)
-        })
+          .then(function (user) {
+            done(null, user)
+          })
+          .catch(function (err) {
+            done(err)
+          })
       })
     }))
   }
@@ -105,20 +105,20 @@ module.exports = function(app) {
       clientID: config.auth.github.clientID,
       clientSecret: config.auth.github.clientSecret,
       callbackURL: config.auth.github.callbackURL
-    }, function(accessToken, refreshToken, profile, done) {
-      process.nextTick(function() {
+    }, function (accessToken, refreshToken, profile, done) {
+      process.nextTick(function () {
         userService.updateGithubUser(accessToken, refreshToken, profile)
-        .then(function(user) {
-          done(null, user)
-        })
-        .catch(function(err) {
-          done(err)
-        })
+          .then(function (user) {
+            done(null, user)
+          })
+          .catch(function (err) {
+            done(err)
+          })
       })
     }))
   }
 
-  app.get('/auth/github', function(req, res, next) {
+  app.get('/auth/github', function (req, res, next) {
     if (!config.auth || !config.auth.github || !config.auth.github.clientID || !config.auth.github.clientSecret) {
       return res.status(500).send('Github auth is not configured');
     }
@@ -129,12 +129,12 @@ module.exports = function(app) {
 
   app.get('/auth/github/callback', passport.authenticate('github', {
     failureRedirect: '/login'
-  }), function(req, res) {
+  }), function (req, res) {
     var url = '/'
     return res.redirect(url);
   });
 
-  app.get('/auth/facebook', function(req, res, next) {
+  app.get('/auth/facebook', function (req, res, next) {
     if (!config.auth || !config.auth.facebook || !config.auth.facebook.clientID || !config.auth.facebook.clientSecret) {
       return res.status(500).send('Facebook Auth is not configured');
     }
@@ -145,12 +145,12 @@ module.exports = function(app) {
 
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/login'
-  }), function(req, res) {
+  }), function (req, res) {
     var url = '/'
     return res.redirect(url);
   });
 
-  app.get('/auth/linkedin', function(req, res, next) {
+  app.get('/auth/linkedin', function (req, res, next) {
     if (!config.auth || !config.auth.linkedin || !config.auth.linkedin.clientID || !config.auth.linkedin.clientSecret) {
       return res.status(500).send('Linkedin auth is not configured');
     }
@@ -161,14 +161,13 @@ module.exports = function(app) {
 
   app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
     failureRedirect: '/login'
-  }), function(req, res) {
+  }), function (req, res) {
     var url = '/'
     return res.redirect(url);
   });
 
 
-
-  app.get('/login', function(req, res) {
+  app.get('/login', function (req, res) {
     return res.render('general/login');
   });
 
@@ -177,7 +176,7 @@ module.exports = function(app) {
     failureRedirect: '/login'
   }));
 
-  app.get('/logout', function(req, res) {
+  app.get('/logout', function (req, res) {
     req.logout();
     return res.redirect('/');
   })

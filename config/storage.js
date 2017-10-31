@@ -12,8 +12,8 @@ if (!storage.getItem('step')) {
   storage.setItem('step', 2)
 }
 
-storage.reset = function() {
-  return new Promise(function(resolve, reject) {
+storage.reset = function () {
+  return new Promise(function (resolve, reject) {
     storage.clearSync()
     storage.setItem('step', 2)
 
@@ -21,8 +21,8 @@ storage.reset = function() {
   })
 }
 
-storage.setConfig = function(obj) {
-  return new Promise(function(resolve, reject) {
+storage.setConfig = function (obj) {
+  return new Promise(function (resolve, reject) {
     return resolve()
   })
 }

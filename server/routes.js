@@ -1,22 +1,20 @@
-//var storage = require('./config/storage');
-
 var configService = require('./services/config')
 var urlHelper = require('./helpers/url');
 var statusHelper = require('./helpers/status');
-var config = require('../../config/index').get();
-var redis_client = require('../../config/redis')
+var config = require('../config/index').get();
+var redis_client = require('../config/redis')
 var Promise = require('bluebird')
 var _ = require('lodash')
-var emitter = require('../../config/emitter');
+var emitter = require('../config/emitter');
 var Subscriber = require('./models/subscriber');
 var slug = require('slug')
 
 /**
  * list of all routes
  */
-module.exports = function(app) {
+module.exports = function (app) {
 
-  app.get(['/', '/catalog'], function(req, res) {
+  app.get(['/', '/catalog'], function (req, res) {
     if (req.is_installation) {
       //return next()
       return res.redirect('/installation')
@@ -40,34 +38,34 @@ module.exports = function(app) {
       }
 
       return req.client.search(query)
-      .then(function(result) {
-        return res.render('basic/catalog', {
-          items: result.data.items,
-          pagination: result.pagination,
-          query: req.query.query,
-          page: page,
-          sort: sort,
-          is_ajax: is_ajax,
-          url: req.url,
-          aggregations: result.data.aggregations,
-          sortings: result.data.sortings,
-          filters: filters,
-          //sortings: sortings
-        });
-      })
-      .catch(function(err) {
-        console.log(err);
-        return res.status(500).json({
-          message: 'unexpected error'
-        });
-      })
+        .then(function (result) {
+          return res.render('basic/catalog', {
+            items: result.data.items,
+            pagination: result.pagination,
+            query: req.query.query,
+            page: page,
+            sort: sort,
+            is_ajax: is_ajax,
+            url: req.url,
+            aggregations: result.data.aggregations,
+            sortings: result.data.sortings,
+            filters: filters,
+            //sortings: sortings
+          });
+        })
+        .catch(function (err) {
+          console.log(err);
+          return res.status(500).json({
+            message: 'unexpected error'
+          });
+        })
     }
   })
 
   /**
    * for experimenting purposes now
    */
-  app.get(['/landing2'], function(req, res) {
+  app.get(['/landing2'], function (req, res) {
 
     var filters = JSON.parse(req.query.filters || '{}');
     var query = {
@@ -98,23 +96,23 @@ module.exports = function(app) {
     }))
 
     Promise.all(promises)
-    .spread(function(recent, year, comments, history, users) {
-      console.log(recent);
+      .spread(function (recent, year, comments, history, users) {
+        console.log(recent);
 
-      res.render('basic/landing2', {
-        recent_items: recent.data.items,
-        items2: year.data.items,
-        aggregations: recent.data.aggregations,
-        url: req.url
+        res.render('basic/landing2', {
+          recent_items: recent.data.items,
+          items2: year.data.items,
+          aggregations: recent.data.aggregations,
+          url: req.url
+        })
       })
-    })
-    .catch(function(err) {
-      console.log(err);
-      return res.status(500).render('pages/error');
-    })
+      .catch(function (err) {
+        console.log(err);
+        return res.status(500).render('pages/error');
+      })
   })
 
-  app.get(['/installation'], function(req, res) {
+  app.get(['/installation'], function (req, res) {
 
     if (req.settings && !req.settings.is_installation) {
       return res.status(404).json({
@@ -125,14 +123,14 @@ module.exports = function(app) {
     var url = config.elasticsearch.host
 
     return statusHelper.elasticsearch(url)
-    .then(function(result) {
+      .then(function (result) {
 
-      result.data_url = process.env.DATA_URL || '';
-      return res.render('installation/start', result);
-    })
+        result.data_url = process.env.DATA_URL || '';
+        return res.render('installation/start', result);
+      })
   })
 
-  app.get('/category/:name', function(req, res) {
+  app.get('/category/:name', function (req, res) {
     var name = req.params.name;
     req.client.aggregation(name, {
       page: req.query.page || 1,
@@ -142,20 +140,20 @@ module.exports = function(app) {
       size: 10000,
       query_string: 'enabled:true OR _missing_:enabled'
     })
-    .then(function(result) {
-      /*console.log(result);*/
-      res.render('basic/category', {
-        aggregation: result,
-        pagination: result.pagination,
-        name: name
+      .then(function (result) {
+        /*console.log(result);*/
+        res.render('basic/category', {
+          aggregation: result,
+          pagination: result.pagination,
+          name: name
+        })
       })
-    })
   })
 
   /**
    * generate autocomplete for main search
    */
-  app.get('/autocomplete', function(req, res) {
+  app.get('/autocomplete', function (req, res) {
 
     var term = req.query.term
 
@@ -163,29 +161,29 @@ module.exports = function(app) {
       per_page: 6,
       query_string: '(enabled:true OR _missing_:enabled) AND name:/' + term + '.*/',
     })
-    .then(function(result) {
-      return res.json(_.map(result.data.items, function(val) {
-        return {
-          //value: val.permalink,
-          value: val.id,
-          label: val.name
-        }
-      }))
-    })
+      .then(function (result) {
+        return res.json(_.map(result.data.items, function (val) {
+          return {
+            //value: val.permalink,
+            value: val.id,
+            label: val.name
+          }
+        }))
+      })
   })
 
 
   /**
    * add item by users
    */
-  app.get('/add', function(req, res) {
+  app.get('/add', function (req, res) {
     res.render('basic/add')
   })
 
   /**
    * add item by users
    */
-  app.post('/add', function(req, res) {
+  app.post('/add', function (req, res) {
     console.log(req.body)
 
     var data = req.body
@@ -200,19 +198,19 @@ module.exports = function(app) {
     }
 
     return req.client.addItem(data)
-    .then(function(item) {
-      return emitter.emitAsync('item.created', item, req.user)
-    })
-    .then(function(result) {
-      req.flash('info', 'hello!')
-      res.redirect('/add')
-    })
+      .then(function (item) {
+        return emitter.emitAsync('item.created', item, req.user)
+      })
+      .then(function (result) {
+        req.flash('info', 'hello!')
+        res.redirect('/add')
+      })
   })
 
   /**
    * generate autocomplete for specific field
    */
-  app.get('/field-autocomplete', function(req, res) {
+  app.get('/field-autocomplete', function (req, res) {
 
     var field = req.query.field
     /*if (['tags'].indexOf(field) === -1) {
@@ -225,21 +223,21 @@ module.exports = function(app) {
       aggregation_query: req.query.term,
       query_string: 'enabled:true OR _missing_:enabled'
     })
-    .then(function(result) {
-      return res.json(_.map(result.data.buckets, function(val) {
-        return {
-          id: val.key,
-          label: val.key,
-          value: val.key
-        }
-      }))
-    })
+      .then(function (result) {
+        return res.json(_.map(result.data.buckets, function (val) {
+          return {
+            id: val.key,
+            label: val.key,
+            value: val.key
+          }
+        }))
+      })
   })
 
   /**
    * generate sitemap for website
    */
-  app.get('/sitemap.xml', function(req, res) {
+  app.get('/sitemap.xml', function (req, res) {
 
     if (!req.settings.is_sitemap) {
       return res.status(404).json({
@@ -255,7 +253,7 @@ module.exports = function(app) {
   /**
    * generate sitemap for website items
    */
-  app.get('/sitemap.item.xml', function(req, res) {
+  app.get('/sitemap.item.xml', function (req, res) {
 
     if (!req.settings.is_sitemap) {
       return res.status(404).json({
@@ -270,22 +268,22 @@ module.exports = function(app) {
     }
 
     req.client.search(query)
-    .then(function(result) {
-      return res.set('Content-Type', 'text/xml').render('general/sitemap_item', {
-        items: result.data.items,
-        url: req.base_url
-      });
-    })
+      .then(function (result) {
+        return res.set('Content-Type', 'text/xml').render('general/sitemap_item', {
+          items: result.data.items,
+          url: req.base_url
+        });
+      })
   })
 
-  app.get('/api', function(req, res) {
+  app.get('/api', function (req, res) {
     res.render('api');
   })
 
   /**
    * compare two or more items
    */
-  app.get(['/compare/:id1/:id2', '/compare/:id1/:id2/:id3'], function(req, res) {
+  app.get(['/compare/:id1/:id2', '/compare/:id1/:id2/:id3'], function (req, res) {
 
     var array = [
       req.client.getItem(req.params.id1),
@@ -297,26 +295,26 @@ module.exports = function(app) {
     }
 
     return Promise.all(array)
-    .spread(function(item1, item2, item3) {
-      console.log(item1);
-      console.log(item2);
-      return res.render('basic/compare', {
-        item1: item1,
-        item2: item2,
-        item3: item3
+      .spread(function (item1, item2, item3) {
+        console.log(item1);
+        console.log(item2);
+        return res.render('basic/compare', {
+          item1: item1,
+          item2: item2,
+          item3: item3
+        })
       })
-    })
-    .catch(function(result) {
-      console.log(result);
-      return res.status(404).send('Sorry cant find that!');
-    })
+      .catch(function (result) {
+        console.log(result);
+        return res.status(404).send('Sorry cant find that!');
+      })
   })
 
 
   /**
    * get item by id or permalink
    */
-  app.get(['/id/:id', '/item/:permalink'], function(req, res) {
+  app.get(['/id/:id', '/item/:permalink'], function (req, res) {
 
     var getItemAsync;
     var item;
@@ -329,49 +327,49 @@ module.exports = function(app) {
     }
 
     return getItemAsync
-    .then(function(result) {
-      item = result;
+      .then(function (result) {
+        item = result;
 
-      if (item.id) {
-        id = item.id
-      }
+        if (item.id) {
+          id = item.id
+        }
 
-      if (!item || item.enabled === false) {
-        return Promise.reject('Not found')
-      }
+        if (!item || item.enabled === false) {
+          return Promise.reject('Not found')
+        }
 
-      return emitter.emitAsync('item.view', item, req.user)
-    })
-    .then(function(result) {
-      var fields = ['tags'];
+        return emitter.emitAsync('item.view', item, req.user)
+      })
+      .then(function (result) {
+        var fields = ['tags'];
 
-      if (req.settings.recommendation_field) {
-        fields = [req.settings.recommendation_field];
-      }
+        if (req.settings.recommendation_field) {
+          fields = [req.settings.recommendation_field];
+        }
 
-      return Promise.all([
-        req.client.similar(id, {
-          fields: fields,
-          query_string: 'enabled:true OR _missing_:enabled'
-        })
-      ])
-    })
-    .spread(function(similar) {
-      console.log(similar);
-      return res.render('basic/item', {
-        item: item,
-        id: id,
-        similar: similar.data.items.slice(0, 4)
-      });
-    })
-    .catch(function(result) {
-      console.log(result);
-      return res.status(404).send('Sorry cant find that!');
-    })
+        return Promise.all([
+          req.client.similar(id, {
+            fields: fields,
+            query_string: 'enabled:true OR _missing_:enabled'
+          })
+        ])
+      })
+      .spread(function (similar) {
+        console.log(similar);
+        return res.render('basic/item', {
+          item: item,
+          id: id,
+          similar: similar.data.items.slice(0, 4)
+        });
+      })
+      .catch(function (result) {
+        console.log(result);
+        return res.status(404).send('Sorry cant find that!');
+      })
   })
 
   // not necessary anymore because system create that out of the box
-  app.post('/add-collection', function(req, res) {
+  app.post('/add-collection', function (req, res) {
 
     if (req.settings && !req.settings.is_installation) {
       return res.status(404).json({
@@ -382,26 +380,26 @@ module.exports = function(app) {
     var json = JSON.parse(req.body.collection)
 
     req.client.addCollection(json)
-    .then(function(result) {
-      return req.client.createMapping(json.name)
-    })
-    .then(function(result) {
-      // if adding collection was successful we go into 2 step
-      return configService.setConfig({
-        step: 2,
-        name: json.name
+      .then(function (result) {
+        return req.client.createMapping(json.name)
       })
-    })
-    .then(function(result) {
-      res.redirect('/');
-    })
-    .catch(function(err) {
-      console.log(err);
-      res.status(500).json({});
-    })
+      .then(function (result) {
+        // if adding collection was successful we go into 2 step
+        return configService.setConfig({
+          step: 2,
+          name: json.name
+        })
+      })
+      .then(function (result) {
+        res.redirect('/');
+      })
+      .catch(function (err) {
+        console.log(err);
+        res.status(500).json({});
+      })
   });
 
-  app.post('/add-data', function(req, res) {
+  app.post('/add-data', function (req, res) {
 
     if (req.settings && !req.settings.is_installation) {
       return res.status(404).json({
@@ -409,8 +407,7 @@ module.exports = function(app) {
       });
     }
 
-    var data = {
-    }
+    var data = {}
 
     if (req.body.json) {
       try {
@@ -429,22 +426,22 @@ module.exports = function(app) {
     }
 
     return req.client.createProject(data)
-    .delay(1500)
-    .then(function(result) {
-      return configService.setConfig({
-        step: 3,
-        name: result.name
+      .delay(1500)
+      .then(function (result) {
+        return configService.setConfig({
+          step: 3,
+          name: result.name
+        })
       })
-    })
-    .then(function(item) {
-      return emitter.emitAsync('project.created')
-    })
-    .then(function(result) {
-      res.redirect('/installation');
-    })
+      .then(function (item) {
+        return emitter.emitAsync('project.created')
+      })
+      .then(function (result) {
+        res.redirect('/installation');
+      })
   });
 
-  app.post('/subscribe', function(req, res) {
+  app.post('/subscribe', function (req, res) {
     var subscriber = new Subscriber({
       email: req.body.email,
       name: req.body.name,
@@ -456,21 +453,21 @@ module.exports = function(app) {
     }
 
     return subscriber.save()
-    .then(function(result) {
-      return emitter.emitAsync('subscriber.created', result)
-    })
-    .then(function(result) {
-      return res.json({});
-    })
-    .catch(function(result) {
-      return res.status(400).json({})
-    })
+      .then(function (result) {
+        return emitter.emitAsync('subscriber.created', result)
+      })
+      .then(function (result) {
+        return res.json({});
+      })
+      .catch(function (result) {
+        return res.status(400).json({})
+      })
   });
 
   /**
    * filter results (SEO)
    */
-  app.get('/filter/:aggregation/:name', function(req, res) {
+  app.get('/filter/:aggregation/:name', function (req, res) {
     var page = parseInt(req.query.page, 10) || 1;
     var aggregation = req.params.aggregation;
 
@@ -492,39 +489,39 @@ module.exports = function(app) {
     }
 
     Promise.all([req.client.search(query), redis_client.getAsync(key)])
-    .spread(function(result, filter_original_value) {
-      var sortings = _.map(result.data.sortings, function(v, k) {
-        return v;
+      .spread(function (result, filter_original_value) {
+        var sortings = _.map(result.data.sortings, function (v, k) {
+          return v;
+        })
+
+        var filter_value = filter_original_value
+
+        if (filter_value) {
+          filter_value = JSON.parse(filter_value)
+        } else {
+          filter_value = req.params.name
+        }
+
+        res.render('basic/catalog', {
+          is_ajax: false,
+          items: result.data.items,
+          pagination: result.pagination,
+          query: req.query.query,
+          page: page,
+          filter: {
+            key: req.params.aggregation,
+            val: filter_value
+          },
+          url: req.url,
+          filter_original_value: filter_original_value,
+          aggregations: result.data.aggregations,
+          sortings: sortings
+        })
       })
-
-      var filter_value = filter_original_value
-
-      if (filter_value) {
-        filter_value = JSON.parse(filter_value)
-      } else {
-        filter_value = req.params.name
-      }
-
-      res.render('basic/catalog', {
-        is_ajax: false,
-        items: result.data.items,
-        pagination: result.pagination,
-        query: req.query.query,
-        page: page,
-        filter: {
-          key: req.params.aggregation,
-          val: filter_value
-        },
-        url: req.url,
-        filter_original_value: filter_original_value,
-        aggregations: result.data.aggregations,
-        sortings: sortings
+      .catch(function (err) {
+        return res.status(500).json({
+          error: 'error'
+        });
       })
-    })
-    .catch(function(err) {
-      return res.status(500).json({
-        error: 'error'
-      });
-    })
   });
 }
