@@ -1,9 +1,0 @@
-{
-  "main": "utils.js",
-  "format": "cjs",
-  "meta": {
-    "*.json": {
-      "format": "json"
-    }
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "main": "get-size.js",
-  "format": "cjs",
-  "meta": {
-    "*.json": {
-      "format": "json"
-    }
-  }
-}
