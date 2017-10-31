@@ -1,0 +1,17 @@
+{
+  "main": "js/packery.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    "sandbox/browserify/bundle.js": {
+      "cjsRequireDetection": false
+    }
+  }
+}

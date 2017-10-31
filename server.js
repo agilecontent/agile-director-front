@@ -4,11 +4,11 @@ var server = require('agile-director-back');
 var node = require('itemsapi-node');
 var Promise = require('bluebird');
 var request = Promise.promisifyAll(require('request'));
-var _ = require('lodash');
+var _ = require('bower_components/lodash/lodash');
 var bodyParser = require('body-parser');
 var express = require('express');
 var config = require('./config/index').get()
-var configService = require('./src/services/config')
+var configService = require('./server/services/config')
 var colors = require('colors')
 var figlet = require('figlet')
 var mongoose = require('./config/mongoose')
@@ -16,7 +16,7 @@ var mongoose = require('./config/mongoose')
 console.log(figlet.textSync('VIDClouddemo'))
 console.log();
 
-var listeners = require('./src/listeners/index')
+var listeners = require('./server/listeners/index')
 
 var storage = require('./config/storage')
 
@@ -35,9 +35,9 @@ server.init({
 
 // standard app syntax
 var app = server.get('express');
-var urlHelper = require('./src/helpers/url');
-var statusHelper = require('./src/helpers/status');
-var nunenv = require('./src/nunenv')(app, 'views', {
+var urlHelper = require('./server/helpers/url');
+var statusHelper = require('./server/helpers/status');
+var nunenv = require('./server/nunenv')(app, 'views', {
   autoescape: true,
   watch: true,
   noCache: true
@@ -137,6 +137,6 @@ app.all('*', function(req, res, next) {
   next();
 })
 
-require('./src/routes')(app)
+require('./server/routes')(app)
 
 module.exports = server

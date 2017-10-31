@@ -3,7 +3,7 @@
 var server = require('./server')
 var app = server.get('express');
 var config = require('./config/index').get();
-var statusHelper = require('./src/helpers/status');
+var statusHelper = require('./server/helpers/status');
 var fs = require('fs');
 var Promise = require('bluebird')
 Promise.config({

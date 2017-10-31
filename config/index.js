@@ -3,7 +3,7 @@
 
 var _ = require('lodash')
 var nconf = require('nconf')
-var configHelper = require('./../src/helpers/config')
+var configHelper = require('../server/helpers/config')
 var fs = require('fs')
 var isProduction = process.env.NODE_ENV === 'production';
 var isDevelopment = false

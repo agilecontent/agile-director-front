@@ -1,0 +1,9 @@
+{
+  "main": "matches-selector.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    }
+  }
+}

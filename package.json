@@ -1,11 +1,20 @@
 {
   "name": "agile-director-front",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "app.js",
   "scripts": {
+    "pro": "gulp --env=pro",
+    "pre": "gulp --env=pre",
+    "dev": "gulp --env=dev",
+    "local": "gulp --env=local",
+    "serve": "gulp serve",
+    "serve:dist": "gulp serve:dist",
     "start": "node app.js",
-    "postinstall": "./node_modules/.bin/bower cache clean --allow-root && ./node_modules/.bin/bower install --allow-root && node ./src/post_install.js"
+    "postinstall": "./node_modules/.bin/bower cache clean --allow-root && ./node_modules/.bin/bower install --allow-root && node ./server/post_install.js"
+  },
+  "engines": {
+    "node": ">=4"
   },
   "repository": {
     "type": "git",
@@ -57,10 +66,141 @@
     "winston": "^2.2.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "node-mongoose-fixtures": "^0.2.4",
-    "should": "^11.1.2",
-    "sinon": "^1.17.6",
-    "supertest": "^2.0.1"
+    "autoprefixer": "^6.7.7",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.13",
+    "css-mqpacker": "^5.0.1",
+    "del": "^3.0.0",
+    "enquirer": "^0.4.1",
+    "eslint": "^4.9.0",
+    "gulp": "github:gulpjs/gulp#4ed9a4a3275559c73a396eff7e1fde3824951ebb",
+    "gulp-bump": "^2.7.0",
+    "gulp-cache": "^0.4.5",
+    "gulp-cdnify": "^1.0.7",
+    "gulp-connect-ssi": "^0.3.2",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-debug": "^3.1.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-filter": "^5.0.0",
+    "gulp-fontello": "github:gillbeits/gulp-fontello#b61ab3e316a5389af423166187880954daae8572",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-ignore": "^2.0.2",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-load-subtasks": "^1.1.2",
+    "gulp-merge-json": "^1.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-rev": "^7.1.2",
+    "gulp-rev-replace": "^0.4.3",
+    "gulp-sass": "^3.1.0",
+    "gulp-sftp": "^0.1.5",
+    "gulp-sourcemaps": "^2.4.0",
+    "gulp-token-replace": "^1.0.4",
+    "gulp-uglify": "^2.0.1",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.8",
+    "gulp-wiredep": "^1.2.0",
+    "gulp-zip": "^4.0.0",
+    "jspm": "0.17.0-beta.25",
+    "lazypipe": "^1.0.1",
+    "node-svn-ultimate": "^1.0.4",
+    "postcss-discard-comments": "^2.0.4",
+    "postcss-import": "^10.0.0",
+    "precss": "^1.4.0",
+    "prompt-confirm": "^0.2.1",
+    "semver": "^5.4.1",
+    "systemjs-builder": "0.15.23",
+    "vinyl-ftp": "^0.6.0"
+  },
+  "jspm": {
+    "dependencies": {
+      "babel": "npm:babel-core@^6.26.0",
+      "draggabilly": "npm:draggabilly@^2.1.1",
+      "lazysizes": "npm:lazysizes@^4.0.0-rc3",
+      "packery": "npm:packery@^2.1.1",
+      "picturefill": "npm:picturefill@^3.0.2",
+      "json": "github:systemjs/plugin-json@^0.3.0"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.25"
+    },
+    "peerDependencies": {
+      "assert": "npm:jspm-nodelibs-assert@^0.2.0",
+      "buffer": "npm:jspm-nodelibs-buffer@^0.2.0",
+      "child_process": "npm:jspm-nodelibs-child_process@^0.2.0",
+      "constants": "npm:jspm-nodelibs-constants@^0.2.0",
+      "crypto": "npm:jspm-nodelibs-crypto@^0.2.0",
+      "events": "npm:jspm-nodelibs-events@^0.2.0",
+      "fs": "npm:jspm-nodelibs-fs@^0.2.0",
+      "module": "npm:jspm-nodelibs-module@^0.2.0",
+      "os": "npm:jspm-nodelibs-os@^0.2.0",
+      "path": "npm:jspm-nodelibs-path@^0.2.0",
+      "process": "npm:jspm-nodelibs-process@^0.2.0",
+      "stream": "npm:jspm-nodelibs-stream@^0.2.0",
+      "string_decoder": "npm:jspm-nodelibs-string_decoder@^0.2.0",
+      "util": "npm:jspm-nodelibs-util@^0.2.0",
+      "vm": "npm:jspm-nodelibs-vm@^0.2.0"
+    },
+    "overrides": {
+      "github:agilecontent/agile-player@master": {
+        "main": "dist/js/agile_player.js"
+      },
+      "npm:pbkdf2@3.0.14": {
+        "main": "browser.js"
+      },
+      "npm:tiny-slider@1.5.5": {
+        "main": "src/tiny-slider.js"
+      },
+      "npm:debug@2.6.8": {
+        "main": "src/browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./src/browser.js": {
+            "node": "./src/node.js"
+          },
+          "./node.js": {
+            "browser": "./src/browser.js"
+          },
+          "fs": "@node/fs",
+          "net": "@node/net",
+          "tty": "@node/tty",
+          "util": "@node/util"
+        }
+      },
+      "npm:inherits@2.0.3": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:lodash@4.17.4": {
+        "map": {
+          "buffer": "@empty",
+          "process": "@empty"
+        }
+      },
+      "npm:safe-buffer@5.1.1": {
+        "browser": "index.js"
+      }
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "browser": true
+    },
+    "extends": [
+      "xo-space/esnext"
+    ],
+    "parser": "babel-eslint",
+    "globals": {
+      "SystemJS": true
+    }
   }
 }

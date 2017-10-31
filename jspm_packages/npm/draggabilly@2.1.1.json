@@ -1,0 +1,19 @@
+{
+  "main": "draggabilly.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    "gulpfile.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  }
+}
