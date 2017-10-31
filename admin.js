@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 
 var cookieParser = require('cookie-parser')
 var moment = require('moment')
-var _ = require('lodash')
+var _ = require('bower_components/lodash/lodash')
 
 admin.use('/lte/plugins', express.static('bower_components/AdminLTE/plugins'))
 admin.use('/assets', express.static('admin/assets'))
@@ -21,12 +21,12 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var config = require('./config/index').get()
 var session = require('express-session')
-var urlHelper = require('./src/helpers/url')
-var generalHelper = require('./src/helpers/general')
-var configService = require('./src/services/config')
-var imageService = require('./src/services/image')
-var subscriberService = require('./src/services/subscriber')
-var userService = require('./src/services/user')
+var urlHelper = require('./server/helpers/url')
+var generalHelper = require('./server/helpers/general')
+var configService = require('./server/services/config')
+var imageService = require('./server/services/image')
+var subscriberService = require('./server/services/subscriber')
+var userService = require('./server/services/user')
 
 var nunjucks = require('nunjucks');
 var multer  = require('multer')
@@ -34,7 +34,7 @@ var multer  = require('multer')
 const UPLOAD_DEST = 'uploads/temp'
 var upload = multer({ dest: UPLOAD_DEST })
 
-var nunenv = require('./src/nunenv')(admin, 'admin/views', {
+var nunenv = require('./server/nunenv')(admin, 'admin/views', {
   autoescape: true,
   watch: true,
   noCache: true,

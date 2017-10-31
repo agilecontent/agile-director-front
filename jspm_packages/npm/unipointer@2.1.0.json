@@ -1,0 +1,9 @@
+{
+  "main": "unipointer.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    }
+  }
+}

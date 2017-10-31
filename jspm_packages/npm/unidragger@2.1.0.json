@@ -1,0 +1,9 @@
+{
+  "main": "unidragger.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    }
+  }
+}

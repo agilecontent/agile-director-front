@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <!--esi <esi:include src="/commons/head/head.inc"/>-->
+  <title></title>
+</head>
+<body>
+<div class="wrapper_general">
+  <main>
+    <div class="wrapper">
+      <div class="container">
+        <div class="main-content assets-content">
+          <div class="assets">
+            <div class="packery-container">
+              <div class="item draggable">
+                <article class="{{item.channelName}}">
+                  <img src="http://res.cloudinary.com/dgiww3flq/image/upload/v1498431872/yba3dlta8oyza0z18o48.jpg">
+                  <h4>{{item.channelName}}</h4>
+                  <aside>
+                    <div class="coverall"/>
+                    <div class="content">
+                      <p class="description">{{item.description}}</p>
+                      <ul class="icon-ul meta-data">
+                        <li class="channel"><i class="icon-li icon icon-tag"></i>{{item.channelName}}</li>
+                        <li class="author"><i class="icon-li icon icon-user"></i>{{item.author}}</li>
+                        <li class="views"><i class="icon-li icon icon-eye"></i>{{item.views}}</li>
+                      </ul>
+                    </div>
+                    <div class="date">
+                      <div class="clock">
+                        <i class="icon icon-clock-o"></i>&nbsp;{{item.length | secondsToDateTime | date:'H:m:ss' | cleanTime}}
+                      </div>
+                      <div class="date-wrap">
+                        <span class="day">{{item.pubDate | date: 'dd'}}</span>
+                        <span class="month">{{item.pubDate | date: 'MMM'}}</span>
+                      </div>
+                    </div>
+                  </aside>
+                  <header>
+                    <h1>{{item.title}}</h1>
+                  </header>
+                  <div class="layer">
+                    <div>
+                      <a href>
+                        <i class="icon"></i>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<!--esi <esi:include src="/commons/footer/footer.inc"/>-->
+</body>
+</html>

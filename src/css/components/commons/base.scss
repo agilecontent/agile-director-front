@@ -1,0 +1,54 @@
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 62.50%;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Aileron-Regular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #74787c; /* Color por defecto de todos los textos de la web */
+  font-size: 1em;
+}
+
+a {
+  color: #3e5d90; /* Color por defecto de todos los links de la web */
+  text-decoration: none;
+  -webkit-transition: all 0.15s ease-in;
+  -moz-transition: all 0.15s ease-in;
+  -o-transition: all 0.15s ease-in;
+  transition: all 0.15s ease-in;
+}
+
+strong {
+  font-family: 'Aileron-Bold';
+  font-weight: normal;
+}
+
+em {
+  font-family: 'Aileron-Italic';
+  font-style: normal;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.clear {
+  clear: both;
+}
+
+.align-middle {
+  display: table-cell;
+  vertical-align: middle;
+  float: none !important;
+}
