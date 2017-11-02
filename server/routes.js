@@ -225,7 +225,6 @@ module.exports = function (app) {
   app.get('/video/:id', function(req, res) {
     var videoId = req.params.name;
     req.client.getVideo(videoId).then(function(video) {
-      console.log(video);
       res.render('basic/detail', {
         video: video
       });
