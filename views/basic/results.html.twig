@@ -8,6 +8,7 @@
     <div class="main-content assets-content">
         <div class="assets">
             <div class="packery-container row">
+              {{ videos }}
                 {% for video in videos %}
                     <article class="result-item col-sm-4">
                       <a href="/video/{{ video.id }}">
