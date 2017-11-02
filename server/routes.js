@@ -211,6 +211,7 @@ module.exports = function (app) {
    * display video results
    */
   app.get('/results', function(req, res) {
+    console.log(req.client);
     req.client.results().then(function(videoResults) {
       console.log(videoResults);
       res.render('basic/results', {
