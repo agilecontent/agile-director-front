@@ -7,24 +7,20 @@
       <div class="packery-container">
         {% for item in items %}
           <div class="item draggable">
-            <article class="{{ item.channelName }}">
+            <article class="{{ item.type }}">
               <img src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}"
-                   alt="{{ item.name | truncate(10, true) }}">
-              <h4>{{ item.channelName }}</h4>
+                   alt="{{ item.name }}">
               <aside>
                 <div class="coverall"/>
                 <div class="content">
-                  <p class="description">{{ item.description | truncate(10, true) }}</p>
                   <ul class="icon-ul meta-data">
-                    <li class="channel"><i class="icon-li icon icon-tag"></i>{{ item.channelName }}
-                    </li>
                     <li class="author"><i class="icon-li icon icon-user"></i>{{ item.author }}</li>
                     <li class="views"><i class="icon-li icon icon-eye"></i>{{ item.views }}</li>
                   </ul>
                 </div>
                 <div class="date">
                   <div class="clock">
-                    <i class="icon icon-clock-o"></i>&nbsp;XXX
+                    <i class="icon icon-clock-o"></i>&nbsp;0
                   </div>
                   <div class="date-wrap">
                     <span class="day">{{ item.pubDate }}</span>
@@ -33,7 +29,7 @@
                 </div>
               </aside>
               <header>
-                <h1>{{ item.name | truncate(10, true) }}</h1>
+                <h1>{{ item.name | truncate(100, true) }}</h1>
               </header>
               <div class="layer">
                 <div>
