@@ -45,8 +45,6 @@ var nunenv = require('./server/nunenv')(app, ['views', 'assets'], {
 
 app.use('/bootstrap', express.static('node_modules/bootstrap'));
 app.use('/assets', express.static('assets'));
-app.use('/css', express.static('assets/css'));
-app.use('/js', express.static('assets/js'));
 app.use('/app/uploads', express.static('uploads'));
 app.use('/libs', express.static('bower_components'));
 
