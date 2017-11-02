@@ -1,18 +1,21 @@
 {% extends "basic/layout.html.twig" %}
 
 {% block content %}
-    <div class="main-content assets-content">
+    <div class="main-content assets-content" id="results-page">
+      <h1>Created videos</h1>
         <div class="assets">
             <div class="packery-container row">
                 {% for video in videos %}
                     <article class="result-item col-sm-4">
-                      <a href="/video/{{ video.id }}">
-                        <img class="img-responsive"
-                             src="{{ '/assets/img/default-video-image.png' }}"
-                             alt="{{ video.name }}"
-                        >
-                        <h4>{{ video.name }}</h4>
-                      </a>
+                      <div class="article-content text-center">
+                        <a href="/video/{{ video.id }}">
+                          <img class="img-responsive"
+                               src="{{ '/assets/img/default-video-image.png' }}"
+                               alt="{{ video.name }}"
+                          >
+                          <h5>{{ video.name }}</h5>
+                        </a>
+                      </div>
                     </article>
                 {% endfor %}
             </div>
