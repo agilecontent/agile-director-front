@@ -212,9 +212,21 @@ module.exports = function (app) {
    */
   app.get('/results', function(req, res) {
     req.client.results().then(function(videoResults) {
-      console.log(videoResults);
+      //console.log(videoResults);
       res.render('basic/results', {
         videos: videoResults
+      });
+    });
+  });
+
+  /**
+   * display video detail
+   */
+  app.get('/video/:id', function(req, res) {
+    var videoId = req.params.name;
+    req.client.getVideo(videoId).then(function(video) {
+      res.render('basic/detail', {
+        video: video
       });
     });
   });
