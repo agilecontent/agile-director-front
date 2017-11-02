@@ -70,7 +70,9 @@
     "css-mqpacker": "^5.0.1",
     "del": "^3.0.0",
     "enquirer": "^0.4.1",
-    "eslint": "^4.9.0",
+    "eslint": "^3.15.0",
+    "eslint-config-xo-space": "^0.15.0",
+    "eslint-plugin-babel": "^4.0.1",
     "gulp": "github:gulpjs/gulp#4ed9a4a3275559c73a396eff7e1fde3824951ebb",
     "gulp-bump": "^2.7.0",
     "gulp-cache": "^0.4.5",
@@ -191,10 +193,17 @@
     "env": {
       "browser": true
     },
+    "parser": "babel-eslint",
     "extends": [
       "xo-space/esnext"
     ],
-    "parser": "babel-eslint",
+    "rules": {
+      "no-undef": 2,
+      "quotes": [
+        1,
+        "single"
+      ]
+    },
     "globals": {
       "SystemJS": true
     }

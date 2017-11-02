@@ -2783,13 +2783,16 @@ $__System.register('1', ['c', '10'], function (_export, _context) {
       Draggabilly = _.default;
     }],
     execute: function () {
-      pckry = new Packery('.packery-container', {
+      pckry = new Packery('.assets', {
+        columnWidth: '.packery-sizer',
+        itemSelector: '.packery-object',
+        rowHeight: '.packery-sizer',
         draggable: true,
-        isInitLayout: false
+        handle: '*'
       });
 
 
-      document.querySelectorAll('.draggable').forEach(function (i) {
+      document.querySelectorAll('.packery-object').forEach(function (i) {
         var draggie = new Draggabilly(i);
         pckry.bindDraggabillyEvents(draggie);
       });
@@ -2810,4 +2813,4 @@ $__System.register('1', ['c', '10'], function (_export, _context) {
   else
     factory();
 });
-//# sourceMappingURL=../maps/js/footer-c49aadbbab.js.map
+//# sourceMappingURL=../maps/js/footer-e3aeca298d.js.map

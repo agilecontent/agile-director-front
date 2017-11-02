@@ -158,29 +158,6 @@ em{
   float:none !important;
 }
 
-.statusBar{
-  position:fixed;
-  top:44px;
-  left:0;
-  width:100%;
-  background:rgba(0, 0, 0, 0.5);
-  z-index:99;
-  padding:5px;
-  text-align:center;
-  font-size:12px;
-  color:white;
-  font-weight:700;
-  height:22px;
-}
-
-.assets{
-  padding-bottom:55px;
-}
-
-.main-content.assets-content{
-  margin-top:66px;
-}
-
 .assets .packery-sizer, .assets .packery-object{
   width:50%;
   height:50vw;
@@ -262,10 +239,6 @@ em{
   height:100%;
   top:0px;
   left:0px;
-}
-
-div.assets:not(.packed), div.assets:not(.packed) article header, .assets:not(.packed) article:hover aside, .assets:not(.packed) article:hover aside .content{
-  visibility:hidden;
 }
 
 .assets article div.layer div{
@@ -453,64 +426,19 @@ div.assets:not(.packed), div.assets:not(.packed) article header, .assets:not(.pa
   line-height:1;
 }
 
-.assets article.tecnologia aside, .assets article.tecnologia h4{
+.assets article.video aside, .assets article.video h4{
   background-color:#AED13F;
   background-color:rgba(174, 209, 63, 0.8);
 }
 
-.assets article.entretenimiento aside, .assets article.entretenimiento h4{
-  background-color:#d23ed0;
-  background-color:rgba(210, 62, 208, 0.8);
-}
-
-.assets article.motor aside, .assets article.motor h4{
+.assets article.audio aside, .assets article.audio h4{
   background-color:#d13f3f;
   background-color:rgba(209, 63, 63, 0.8);
 }
 
-.assets article.politica aside, .assets article.politica h4{
-  background-color:#ffa800;
-  background-color:rgba(255, 168, 0, 0.8);
-}
-
-.assets article.ciencia aside, .assets article.ciencia h4{
-  background-color:#50d13f;
-  background-color:rgba(80, 209, 63, 0.8);
-}
-
-.assets article.social aside, .assets article.social h4{
-  background-color:#ffea01;
-  background-color:rgba(255, 234, 1, 0.8);
-}
-
-.assets article.cultura aside, .assets article.cultura h4{
-  background-color:#995c37;
-  background-color:rgba(153, 92, 55, 0.8);
-}
-
-.assets article.internacional aside, .assets article.internacional h4{
+.assets article.picture aside, .assets article.picture h4{
   background-color:#5ecee6;
   background-color:rgba(94, 206, 230, 0.8);
-}
-
-.assets article.deportes aside, .assets article.deportes h4{
-  background-color:#126ae0;
-  background-color:rgba(18, 106, 224, 0.8);
-}
-
-.assets article.economia aside, .assets article.economia h4{
-  background-color:#c9c6c6;
-  background-color:rgba(201, 198, 198, 0.8);
-}
-
-.assets article.gente aside, .assets article.gente h4{
-  background-color:#740970;
-  background-color:rgba(116, 9, 112, 0.8);
-}
-
-.assets article.television aside, .assets article.television h4{
-  background-color:#0bf0f8;
-  background-color:rgba(11, 240, 248, 0.8);
 }
 
 .icon-clock:before{ content:'\e800'; }
@@ -610,4 +538,4 @@ div.assets:not(.packed), div.assets:not(.packed) article header, .assets:not(.pa
 }
 
 
-/*# sourceMappingURL=../maps/css/index-6c2bad7f9e.min.css.map */
+/*# sourceMappingURL=../maps/css/index-18644f9ef8.min.css.map */
