@@ -3,20 +3,20 @@
 {% block content %}
     <div class="main-content assets-content" id="results-page">
       <h1>Videos</h1>
-        <div class="assets">
-            <div class="packery-container row">
-                {% for video in videos %}
-                    <article class="result-item col-sm-4">
-                      <div class="article-content text-center">
-                        <img class="img-responsive"
-                             src="{{ '/assets/img/default-video-image.png' }}"
-                             alt="{{ video.name }}"
-                        >
-                        <h5>{{ video.name }}</h5>
-                      </div>
-                    </article>
-                {% endfor %}
-            </div>
+        <div>
+          <div class="packery-container row">
+            {% for video in videos %}
+              <article class="result-item col-sm-4">
+                <div class="article-content text-center">
+                  <img class="img-responsive"
+                       src="{{ '/assets/img/default-video-image.png' }}"
+                       alt="{{ video.name }}"
+                  >
+                  <h5>{{ video.name }}</h5>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
         </div>
     </div>
 {% endblock %}
