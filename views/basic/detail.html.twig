@@ -1,0 +1,15 @@
+{% extends "basic/layout.html.twig" %}
+
+{% block content %}
+    <div class="main-content assets-content">
+        <div class="assets">
+            <div class="packery-container">
+              {{ video }}
+              <h2>{{ video.title }}</h2>
+              <video controls>
+                <source src="{{ video.url }}" type="video/mp4">
+              </video>
+            </div>
+        </div>
+    </div>
+{% endblock %}

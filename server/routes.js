@@ -220,6 +220,19 @@ module.exports = function (app) {
   });
 
   /**
+   * display video detail
+   */
+  app.get('/video/:id', function(req, res) {
+    var videoId = req.params.name;
+    req.client.getVideo(videoId).then(function(video) {
+      console.log(video);
+      res.render('basic/detail', {
+        video: video
+      });
+    });
+  });
+
+  /**
    * generate autocomplete for specific field
    */
   app.get('/field-autocomplete', function (req, res) {
