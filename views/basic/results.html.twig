@@ -7,6 +7,7 @@
                 {% for video in videos %}
                     <article class="result-item col-sm-4">
                       <a href="/video/{{ video.id }}">
+                        <img src="{{ video.image || default-video-thumb.jpg }}" alt="{{ video.name }}">
                         <p>{{ video.name }}</p>
                       </a>
                     </article>
