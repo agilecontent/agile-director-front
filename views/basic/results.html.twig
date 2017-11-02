@@ -1,15 +1,10 @@
-{% if is_ajax == false %}
-    {% extends "basic/layout.html.twig" %}
-    {% block title %}{% endblock %}
-    {% block description %}{% endblock %}
-{% endif %}
+{% extends "basic/layout.html.twig" %}
 
 {% block content %}
     <div class="main-content assets-content">
         <div class="assets">
             <div class="packery-container row">
                 {% for video in videos %}
-                  {{ video }}
                     <article class="result-item col-sm-4">
                       <a href="/video/{{ video.id }}">
                         <p>{{ video.name }}</p>
