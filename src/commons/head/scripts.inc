@@ -1,4 +1,4 @@
-<!-- build:js /assets/js/header.js async -->
+<!-- build:js js/header.js async -->
 <script src="jspm_packages/system.js"></script>
 <script src="jspm.browser.js"></script>
 <script src="jspm.config.js"></script>
