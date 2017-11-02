@@ -3,10 +3,11 @@
 {% block description %}{% endblock %}
 {% block content %}
   <div class="main-content assets-content">
-    <div class="assets">
+    <div class="assets packery-wrapper">
+      <div class="packery-sizer"></div>
       <div class="packery-container">
         {% for item in items %}
-          <div class="item draggable">
+          <div class="packery-object">
             <article class="{{ item.type }}">
               <img src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}"
                    alt="{{ item.name }}">
@@ -34,7 +35,7 @@
               <div class="layer">
                 <div>
                   <a href>
-                    <i class="icon"></i>
+                    <i class="icon icon-minus-circled"></i>
                   </a>
                 </div>
               </div>

@@ -6,7 +6,8 @@ let pckry = new Packery('.assets', {
   itemSelector: '.packery-object',
   rowHeight: '.packery-sizer',
   draggable: true,
-  handle: '*'
+  handle: '*',
+  percentPosition: true
 });
 
 document.querySelectorAll('.packery-object').forEach(i => {
@@ -15,6 +16,6 @@ document.querySelectorAll('.packery-object').forEach(i => {
 });
 
 pckry.on('layoutComplete', () => {
-  pckry.element.parentElement.classList.add("packed");
+  pckry.element.classList.add("packed");
 });
 pckry.layout();
