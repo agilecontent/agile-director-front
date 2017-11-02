@@ -210,6 +210,18 @@ module.exports = function(app) {
   })
 
   /**
+   * display video results
+   */
+  app.get('/results', function(req, res) {
+    req.client.results().then(function(videoResults) {
+      console.log(videoResults);
+      res.render('basic/results', {
+        videos: []
+      });
+    });
+  });
+
+  /**
    * generate autocomplete for specific field
    */
   app.get('/field-autocomplete', function(req, res) {
