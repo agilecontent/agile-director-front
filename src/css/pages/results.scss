@@ -1,5 +1,23 @@
 #results-page {
+  h1 {
+    margin-bottom: 20px;
+  }
+  a {
+    text-decoration: none;
+  }
   .result-item {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
 
+    h5 {
+      padding: 10px;
+      font-size: 12px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: #333;
+      font-weight: normal;
+    }
   }
 }

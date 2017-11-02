@@ -449,6 +449,37 @@ em{
 
 .icon-eye:before{ content:'\e803'; }
 
+.icon-plus-circled:before{ content:'\e804'; }
+
+.icon-minus-circled:before{ content:'\e805'; }
+
+#results-page h1{
+  margin-bottom:20px;
+}
+
+#results-page a{
+  text-decoration:none;
+}
+
+#results-page .result-item{
+  margin-bottom:30px;
+  border:1px solid #ddd;
+  -webkit-border-radius:2px;
+     -moz-border-radius:2px;
+          border-radius:2px;
+}
+
+#results-page .result-item h5{
+  padding:10px;
+  font-size:12px;
+  white-space:nowrap;
+  -o-text-overflow:ellipsis;
+     text-overflow:ellipsis;
+  overflow:hidden;
+  color:#333;
+  font-weight:normal;
+}
+
 @media (min-width: 480px){
   .assets .packery-sizer, .assets .packery-object{
     width:33.333%;
@@ -538,4 +569,4 @@ em{
 }
 
 
-/*# sourceMappingURL=../maps/css/index-18644f9ef8.min.css.map */
+/*# sourceMappingURL=../maps/css/index-e796ba89f3.min.css.map */
