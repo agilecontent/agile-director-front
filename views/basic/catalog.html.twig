@@ -1,68 +1,51 @@
-{% if is_ajax == false %}
-    {% extends "basic/layout.html.twig" %}
-    {% block title %}{% endblock %}
-    {% block description %}{% endblock %}
-{% endif %}
-
+{% extends "basic/layout2.html.twig" %}
+{% block title %}{% endblock %}
+{% block description %}{% endblock %}
 {% block content %}
-    <div class="main-content assets-content">
-        <div class="assets">
-            <div class="packery-container">
-                {% for item in items %}
-                    <div class="item draggable">
-                        <article class="{{ item.channelName }}">
-                            <img src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}"
-                                 alt="{{ item.name | truncate(10, true) }}">
-                            <h4>{{ item.channelName }}</h4>
-                            <aside>
-                                <div class="coverall"/>
-                                <div class="content">
-                                    <p class="description">{{ item.description | truncate(10, true) }}</p>
-                                    <ul class="icon-ul meta-data">
-                                        <li class="channel"><i class="icon-li icon icon-tag"></i>{{ item.channelName }}
-                                        </li>
-                                        <li class="author"><i class="icon-li icon icon-user"></i>{{ item.author }}</li>
-                                        <li class="views"><i class="icon-li icon icon-eye"></i>{{ item.views }}</li>
-                                    </ul>
-                                </div>
-                                <div class="date">
-                                    <div class="clock">
-                                        <i class="icon icon-clock-o"></i>&nbsp;XXX
-                                    </div>
-                                    <div class="date-wrap">
-                                        <span class="day">{{ item.pubDate }}</span>
-                                        <span class="month">{{ item.pubDate }}</span>
-                                    </div>
-                                </div>
-                            </aside>
-                            <header>
-                                <h1>{{ item.name | truncate(10, true) }}</h1>
-                            </header>
-                            <div class="layer">
-                                <div>
-                                    <a href>
-                                        <i class="icon"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+  <div class="main-content assets-content">
+    <div class="assets">
+      <div class="packery-container">
+        {% for item in items %}
+          <div class="item draggable">
+            <article class="{{ item.channelName }}">
+              <img src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}"
+                   alt="{{ item.name | truncate(10, true) }}">
+              <h4>{{ item.channelName }}</h4>
+              <aside>
+                <div class="coverall"/>
+                <div class="content">
+                  <p class="description">{{ item.description | truncate(10, true) }}</p>
+                  <ul class="icon-ul meta-data">
+                    <li class="channel"><i class="icon-li icon icon-tag"></i>{{ item.channelName }}
+                    </li>
+                    <li class="author"><i class="icon-li icon icon-user"></i>{{ item.author }}</li>
+                    <li class="views"><i class="icon-li icon icon-eye"></i>{{ item.views }}</li>
+                  </ul>
+                </div>
+                <div class="date">
+                  <div class="clock">
+                    <i class="icon icon-clock-o"></i>&nbsp;XXX
+                  </div>
+                  <div class="date-wrap">
+                    <span class="day">{{ item.pubDate }}</span>
+                    <span class="month">{{ item.pubDate }}</span>
+                  </div>
+                </div>
+              </aside>
+              <header>
+                <h1>{{ item.name | truncate(10, true) }}</h1>
+              </header>
+              <div class="layer">
+                <div>
+                  <a href>
+                    <i class="icon"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-{% endblock %}
-
-
-
-
-{% block before_head_end %}
-    <link rel="stylesheet" type="text/css"
-          href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/start/jquery-ui.css"/>
-{% endblock %}
-
-{% block before_body_end %}
-    {#<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>#}
-    {% include "general/autocomplete.html.twig" ignore missing %}
-
+  </div>
 {% endblock %}
