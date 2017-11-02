@@ -68,7 +68,7 @@ module.exports = function (gulp, $, conf, env) {
   gulp.task('systemjs:html:footer', () => {
     return gulp.src(conf.path.src('**/commons/footer/*.inc'))
       .pipe($.replace(
-        /<script>[\s\S]*System.import.*\n\s*<\/script>/,
+        /<script src="jspm_packages\/system.js">[\s\S]*System.import.*\n\s*<\/script>/,
         `<script src="js/footer.js" async></script>`
       ))
       .pipe(gulp.dest(conf.paths.tmp));
