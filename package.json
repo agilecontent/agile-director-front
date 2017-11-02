@@ -13,9 +13,6 @@
     "start": "node app.js",
     "postinstall": "./node_modules/.bin/bower cache clean --allow-root && ./node_modules/.bin/bower install --allow-root && node ./server/post_install.js"
   },
-  "engines": {
-    "node": ">=4"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/horasikus/agile-director-front.git"

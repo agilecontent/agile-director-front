@@ -1,6 +1,5 @@
 'use strict';
 
-
 var _ = require('lodash')
 var nconf = require('nconf')
 var configHelper = require('../server/helpers/config')
@@ -15,7 +14,7 @@ if (
   isDevelopment = true
 }
 
-var isMocha = !!_.find(process.argv, function(val) {
+var isMocha = !!_.find(process.argv, function (val) {
   return val.indexOf('mocha') !== -1;
 });
 
@@ -60,7 +59,7 @@ if (MONGODB_URL) {
   nconf.set('mongodb:uri', MONGODB_URL)
 }
 
-exports.get = function() {
+exports.get = function () {
   return nconf.get();
 }
 module.exports = exports;

@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 
 var cookieParser = require('cookie-parser')
 var moment = require('moment')
-var _ = require('bower_components/lodash/lodash')
+var _ = require('./bower_components/lodash/lodash')
 
 admin.use('/lte/plugins', express.static('bower_components/AdminLTE/plugins'))
 admin.use('/assets', express.static('admin/assets'))

@@ -1,5 +1,5 @@
-var emitter = require('../../../config/emitter');
-var log = require('../../../config/logger');
+var emitter = require('../../config/emitter');
+var log = require('../../config/logger');
 var Promise = require('bluebird')
 
 emitter.on('user.registration_success', function(user) {

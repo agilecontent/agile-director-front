@@ -1,6 +1,6 @@
 var User = require('../models/user.js');
 var Promise = require('bluebird')
-var emitter = require('../../../config/emitter');
+var emitter = require('../../config/emitter');
 var _ = require('lodash')
 
 /**

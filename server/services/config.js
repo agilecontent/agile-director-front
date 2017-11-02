@@ -1,5 +1,5 @@
 var _ = require('lodash')
-var mongoose = require('../../../config/mongoose')
+var mongoose = require('../../config/mongoose')
 var Config = require('./../models/config')
 
 /**

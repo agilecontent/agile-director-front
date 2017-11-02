@@ -1,5 +1,5 @@
 var Upload = require('s3-uploader');
-var config = require('../../../config/index').get()
+var config = require('../../config/index').get()
 
 var client
 
