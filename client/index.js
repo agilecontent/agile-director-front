@@ -427,6 +427,16 @@ AgileAPI.prototype = {
         return res.body;
       });
   },
-}
+
+  results: function () {
+    var self = this;
+    return request.postAsync({
+      url: self.backendUrl + '/results'
+    })
+      .then(function (res) {
+        return res.body;
+      });
+  }
+};
 
 module.exports = AgileAPI;
