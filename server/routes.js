@@ -214,7 +214,7 @@ module.exports = function (app) {
     req.client.results().then(function(videoResults) {
       console.log(videoResults);
       res.render('basic/results', {
-        videos: []
+        videos: videoResults
       });
     });
   });
