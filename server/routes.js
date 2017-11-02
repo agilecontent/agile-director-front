@@ -212,7 +212,7 @@ module.exports = function (app) {
    */
   app.get('/results', function(req, res) {
     req.client.results().then(function(videoResults) {
-      console.log(videoResults);
+      //console.log(videoResults);
       res.render('basic/results', {
         videos: videoResults
       });
