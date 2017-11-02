@@ -430,7 +430,7 @@ AgileAPI.prototype = {
 
   results: function () {
     var self = this;
-    return request.postAsync({
+    return request.getAsync({
       url: self.backendUrl + '/results'
     })
       .then(function (res) {
