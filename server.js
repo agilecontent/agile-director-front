@@ -37,7 +37,7 @@ server.init({
 var app = server.get('express');
 var urlHelper = require('./server/helpers/url');
 var statusHelper = require('./server/helpers/status');
-var nunenv = require('./server/nunenv')(app, 'views', {
+var nunenv = require('./server/nunenv')(app, ['views', 'assets'], {
   autoescape: true,
   watch: true,
   noCache: true
