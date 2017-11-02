@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  {% include "commons/head/metas.inc" %}
+  {% include "commons/head/styles.inc" %}
+  {% include "commons/head/scripts.inc" %}
+  <title>VIDCloud</title>
+  {% block before_head_end %}
+  {% endblock %}
+</head>
+<body>
+<div class="wrapper_general">
+  <main>
+    <div class="wrapper">
+      <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+  </main>
+</div>
+{% block before_body_end %}
+{% endblock %}
+{% include "commons/footer/scripts.inc" %}
+</body>
+</html>
