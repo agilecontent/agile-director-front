@@ -434,7 +434,7 @@ AgileAPI.prototype = {
       url: self.backendUrl + '/results'
     })
       .then(function (res) {
-        return res.body;
+        return JSON.parse(res.body);
       });
   }
 };
