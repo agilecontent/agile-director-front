@@ -461,7 +461,7 @@ em{
   text-decoration:none;
 }
 
-#results-page .result-item{
+#results-page .result-item div{
   margin-bottom:30px;
   border:1px solid #ddd;
   -webkit-border-radius:2px;
@@ -469,9 +469,8 @@ em{
           border-radius:2px;
 }
 
-#results-page .result-item h5{
+#results-page .result-item div h5{
   padding:10px;
-  font-size:12px;
   white-space:nowrap;
   -o-text-overflow:ellipsis;
      text-overflow:ellipsis;
@@ -569,4 +568,4 @@ em{
 }
 
 
-/*# sourceMappingURL=../maps/css/index-e796ba89f3.min.css.map */
+/*# sourceMappingURL=../maps/css/index-027aac2ed0.min.css.map */

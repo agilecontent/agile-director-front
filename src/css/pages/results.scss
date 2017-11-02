@@ -5,14 +5,13 @@
   a {
     text-decoration: none;
   }
-  .result-item {
+  .result-item div {
     margin-bottom: 30px;
     border: 1px solid #ddd;
     border-radius: 2px;
 
     h5 {
       padding: 10px;
-      font-size: 12px;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
