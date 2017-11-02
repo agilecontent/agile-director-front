@@ -1,7 +1,7 @@
 'use strict';
 
 var server = require('agile-director-back');
-var node = require('itemsapi-node');
+var node = require('client/index');
 var Promise = require('bluebird');
 var request = Promise.promisifyAll(require('request'));
 var _ = require('./bower_components/lodash/lodash');
