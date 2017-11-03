@@ -5,13 +5,27 @@
   a {
     text-decoration: none;
   }
-  .result-item div {
+  .result-item .article-content {
     margin-bottom: 30px;
     border: 1px solid #ddd;
     border-radius: 2px;
 
     video {
       width: 100%;
+    }
+
+    .video-status {
+      position: relative;
+
+      .status-code {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 30px;
+      }
     }
 
     h5 {
