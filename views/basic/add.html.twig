@@ -4,9 +4,7 @@
 
 <div class="main-container">
   <div class="container">
-
     <div class="row">
-
       <div class="col-md-9 page-content">
         <div class="inner-box category-content">
           <h2 class="title-2 uppercase">
@@ -15,11 +13,10 @@
           </strong></h2>
           <div class="row">
             <div class="col-sm-12">
-
               {% if flash.length %}
-              <span style="color: green; font-size: 16px;">Item being processed.</span>
+                <span style="color: green; font-size: 16px;">Item being processed.</span>
               {% else %}
-              Please fill below form to add a new media file.<br />
+                Please fill below form to add a new media file.<br />
               {% endif %}
               <br />
               <br />
@@ -103,7 +100,6 @@
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
   <script src="/libs/jquery.tagsinput/src/jquery.tagsinput.js"></script>
   <script>
-
   {% for field in ['tags'] %}
     $('#{{ field }}').tagsInput({
       width: '100%',
@@ -116,9 +112,7 @@
       event.preventDefault();
       $('#{{ field }}').addTag($(this).text());
     });
-
   {% endfor %}
-
   </script>
 {% endblock %}
 
