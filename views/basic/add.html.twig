@@ -42,9 +42,20 @@
                   </div>
 
                   <div class="form-group">
+                    <label class="col-md-3 control-label" for="type">Media Type</label>
+                    <div class="col-md-2">
+                      <select class="form-control" name="type" id="type" required>
+                        <option value="es">Audio</option>
+                        <option value="en">Video</option>
+                        <option value="en">Image</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label class="col-md-3 control-label" for="videoURL">URL</label>
                     <div class="col-md-8">
-                      <input id="videoURL" name="videoURL" placeholder="URL" class="form-control input-md" type="url" required pattern="https?://www.youtube.+" />
+                      <input id="videoURL" name="videoURL" placeholder="URL" class="form-control input-md" type="url" required />
                     </div>
                   </div>
 
@@ -52,16 +63,6 @@
                     <label class="col-md-3 control-label" for="author">Author</label>
                     <div class="col-md-8">
                       <input id="author" name="author" placeholder="Author" class="form-control input-md" type="text" />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-3 control-label" for="language">Language</label>
-                    <div class="col-md-2">
-                      <select class="form-control" name="language" id="language" required>
-                        <option value="es">Spanish</option>
-                        <option value="en">English</option>
-                      </select>
                     </div>
                   </div>
 
