@@ -8,9 +8,20 @@
             {% for video in videos %}
               <article class="result-item col-sm-4">
                 <div class="article-content text-center">
-                  <video controls>
-                    <source src="{{ video.links.url }}" type="video/mp4">
-                  </video>
+                  {% if video.status.code == 'done' %}
+                    <video controls>
+                      <source src="{{ video.links.url }}" type="video/mp4">
+                    </video>
+                  {% endif %}
+                  {% if video.status.code != 'done' %}
+                    <div class="video-status">
+                      <img class="img-responsive"
+                           src="{{ '/assets/img/default-video-image.png' }}"
+                           alt="{{ video.name }}"
+                      >
+                      <p class="status-code">{{ video.status.code }}</p>
+                    </div>
+                  {% endif %}
                   <h5>{{ video.name }}</h5>
                 </div>
               </article>
