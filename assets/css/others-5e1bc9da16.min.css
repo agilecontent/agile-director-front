@@ -1,0 +1,28 @@
+#results-page h1{
+    margin-bottom:20px;
+}
+#results-page a{
+    text-decoration:none;
+}
+#results-page .result-item div{
+    margin-bottom:30px;
+    border:1px solid #ddd;
+    -webkit-border-radius:2px;
+       -moz-border-radius:2px;
+            border-radius:2px;
+}
+#results-page .result-item div video{
+    width:100%;
+}
+#results-page .result-item div h5{
+    padding:10px;
+    white-space:nowrap;
+    -o-text-overflow:ellipsis;
+       text-overflow:ellipsis;
+    overflow:hidden;
+    color:#333;
+    font-weight:normal;
+}
+
+
+/*# sourceMappingURL=../maps/css/others-5e1bc9da16.min.css.map */
