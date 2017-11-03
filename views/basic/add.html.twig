@@ -28,6 +28,17 @@
               <form class="form-horizontal" id="add" action="/add" method="POST">
                 <fieldset>
                   <div class="form-group">
+                    <label class="col-md-3 control-label" for="type">Media Type</label>
+                    <div class="col-md-2">
+                      <select class="form-control" name="type" id="type" required>
+                        <option value="es">Audio</option>
+                        <option value="en">Video</option>
+                        <option value="en">Image</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
                     <label class="col-md-3 control-label" for="Name">Name</label>
                     <div class="col-md-8">
                       <input id="name" name="name" placeholder="Name" class="form-control input-md" type="text" required />
@@ -38,17 +49,6 @@
                     <label class="col-md-3 control-label" for="description">Description</label>
                     <div class="col-md-8">
                       <input id="description" name="description" placeholder="Description" class="form-control input-md" type="text" />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-md-3 control-label" for="type">Media Type</label>
-                    <div class="col-md-2">
-                      <select class="form-control" name="type" id="type" required>
-                        <option value="es">Audio</option>
-                        <option value="en">Video</option>
-                        <option value="en">Image</option>
-                      </select>
                     </div>
                   </div>
 
@@ -84,7 +84,6 @@
                   </div>
                 </fieldset>
               </form>
-
             </div>
           </div>
         </div>
