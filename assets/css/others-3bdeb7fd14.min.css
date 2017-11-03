@@ -13,9 +13,12 @@
 }
 #results-page .result-item .article-content video{
     width:100%;
+    padding:4px;
+    display:block;
 }
 #results-page .result-item .article-content .video-status{
     position:relative;
+    padding:4px;
 }
 #results-page .result-item .article-content .video-status .status-code{
     position:absolute;
@@ -41,4 +44,4 @@
 }
 
 
-/*# sourceMappingURL=../maps/css/others-ae5aa5ddfc.min.css.map */
+/*# sourceMappingURL=../maps/css/others-3bdeb7fd14.min.css.map */

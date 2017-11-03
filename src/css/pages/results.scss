@@ -12,10 +12,13 @@
 
     video {
       width: 100%;
+      padding: 4px;
+      display: block;
     }
 
     .video-status {
       position: relative;
+      padding: 4px;
 
       .status-code {
         position: absolute;
