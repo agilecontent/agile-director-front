@@ -1,51 +1,55 @@
 <script>
-  var createVideoGrid = document.querySelector('#create-video ul');
-  var items = document.querySelectorAll('#assets-to-choose .item');
+  document.addEventListener('DOMContentLoaded', function() {
+    var createVideoGrid = document.querySelector('#create-video ul');
+    var items = document.querySelectorAll('#assets-to-choose .item');
 
-  function createEl (el) {
-    return document.createElement(el);
-  }
+    function createEl (el) {
+      return document.createElement(el);
+    }
 
-  function createElementStructure (item) {
-    var li = createEl('li');
-    var img = createEl('img');
+    // Create the main element with the specific data
+    function createElementStructure (item) {
+      var li = createEl('li');
+      var img = createEl('img');
 
-    // Add data
-    li.setAttribute('data', "mediaURL: '"+ item.mediaURL +"', image: '"+ item.image +"'");
-    img.src = item.image;
+      // Add data
+      li.setAttribute('data', "mediaURL: '"+ item.mediaURL +"', image: '"+ item.image +"'");
+      img.src = item.image;
 
-    li.append(img);
+      li.append(img);
 
-    return li;
-  }
+      return li;
+    }
 
-  function createConfigElements () {
-    var container = createEl('div');
-    var duration = createEl('input');
-    var delay = createEl('input');
+    // Create the configuration inputs for te element
+    function createConfigElements () {
+      var container = createEl('div');
+      var duration = createEl('input');
+      var delay = createEl('input');
 
-    // Add classes
-    container.className = 'config';
-    duration.className = 'duration';
-    delay.className = 'delay';
+      // Add classes
+      container.className = 'config';
+      duration.className = 'duration';
+      delay.className = 'delay';
 
-    container.append(duration, delay);
+      container.append(duration, delay);
 
-    return container;
-  }
+      return container;
+    }
 
-  Array.from(items).forEach(function(item) {
-    item.addEventListener('click', function() {
-      var data = {
-        mediaURL: item.getAttribute('data-media-url'),
-        image: item.getAttribute('data-media')
-      };
+    Array.from(items).forEach(function(item) {
+      item.addEventListener('click', function() {
+        var data = {
+          mediaURL: item.getAttribute('data-media-url'),
+          image: item.getAttribute('data-image')
+        };
 
-      var element = createElementStructure(data);
+        var element = createElementStructure(data);
+        element.append(createConfigElements());
 
-      element.append(createConfigElements());
-
-      createVideoGrid.append(element);
+        // Inject to the list
+        createVideoGrid.append(element);
+      });
     });
   });
 </script>
