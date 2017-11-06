@@ -6,14 +6,20 @@
 
     // Toggle advanced
     advancedOptions.addEventListener('click', function() {
-      Array.from(createVideoGrid.children).forEach(function(item) {
-        var itemConfig = item.querySelector('.config');
-        itemConfig.classList.toggle('show');
-      });
+      createVideoGrid.classList.toggle('show-config');
     });
 
     function onRemoveItem() {
-      console.log('remove');
+      var itemRemoved = false;
+      Array.from(createVideoGrid.children).forEach(function(item) {
+        if(item === this) {
+          createVideoGrid.removeChild(this);
+        } else if (itemRemoved) {
+          var nextItem = item.querySelector('.order');
+          var currentIndex = nextItem.innerHTML;
+          nextItem.innerHTML = currentIndex - 1;
+        }
+      });
     }
 
     function createEl (el) {

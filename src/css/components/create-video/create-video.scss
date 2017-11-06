@@ -1,6 +1,12 @@
 #create-video {
   ul {
     padding: 0;
+
+    &.show-config {
+      .config {
+        display: block;
+      }
+    }
   }
   li {
     list-style-type: none;
