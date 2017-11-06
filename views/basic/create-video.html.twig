@@ -12,20 +12,23 @@
       var li = createEl('li');
       var img = createEl('img');
       var order = createEl('span');
+      var orderNumber = createEl('span');
       var container = createEl('div');
 
       // Add data
       li.setAttribute('data', "mediaURL: '"+ item.mediaURL +"', image: '"+ item.image +"'");
       img.src = item.image;
-      order.innerHTML = item.order;
+      orderNumber.innerHTML = orderNumber.order;
 
       // Add classes
       container.className = 'content';
       li.className = 'col-sm-3';
       img.className = 'img-thumbnail img-responsive';
+      orderNumber.className = 'order';
 
+      // Put elements together
+      order.append(orderNumber);
       container.append(img, order);
-
       li.append(container);
 
       return li;
@@ -66,7 +69,7 @@
 </script>
 
 <h3>Video</h3>
-<div id="create-video">
+<div id="create-video" class="row">
   <ul></ul>
 </div>
 
