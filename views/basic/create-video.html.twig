@@ -11,9 +11,10 @@
 
     function onRemoveItem(event) {
       var itemRemoved = false;
-      var removingItem = event.target.closest('li');
+      var removingItem = event.currentTarget;
+
       Array.from(createVideoGrid.children).forEach(function(item) {
-        if(item === removingItem) {
+        if(item.querySelector('.content') === removingItem) {
           createVideoGrid.removeChild(removingItem);
           itemRemoved = true;
         } else if (itemRemoved) {
@@ -56,7 +57,7 @@
       container.append(img, order);
       li.append(container);
 
-      li.addEventListener('click', onRemoveItem);
+      container.addEventListener('click', onRemoveItem);
 
       return li;
     }
