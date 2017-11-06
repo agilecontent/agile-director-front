@@ -13,13 +13,14 @@
       var itemRemoved = false;
       var removingItem = event.target.closest('li');
       Array.from(createVideoGrid.children).forEach(function(item) {
-        console.log(item, removingItem);
         if(item === removingItem) {
           createVideoGrid.removeChild(removingItem);
+          itemRemoved = true;
         } else if (itemRemoved) {
-          var nextItem = item.querySelector('.order');
-          var currentIndex = nextItem.innerHTML;
-          nextItem.innerHTML = currentIndex - 1;
+          var nextItemOrder = item.querySelector('.order');
+          console.log(nextItemOrder);
+          var currentIndex = nextItemOrder.innerHTML;
+          nextItemOrder.innerHTML = parseInt(currentIndex) - 1;
         }
       });
     }
