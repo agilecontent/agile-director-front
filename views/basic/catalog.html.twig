@@ -112,7 +112,6 @@
         <div class="items">
           {% for item in items %}
           <div class="col-xs-3 col-md-3" style="height: 200px;">
-            {{ dump(item) }}
             <div href="{% if item.permalink %}/item/{{ item.permalink }}{% else %}/id/{{ item.id }}{% endif %}?s={{ query }}" class="">
               <img class="img-thumbnail" src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}" alt="{{ item.name }}">
               <p>{{ item.name }}</p>
@@ -131,9 +130,6 @@
   </div>
 </div>
 {% endblock %}
-
-
-
 
 {% block before_head_end %}
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/start/jquery-ui.css" />

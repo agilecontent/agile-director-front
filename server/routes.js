@@ -23,7 +23,7 @@ module.exports = function (app) {
       var page = parseInt(req.query.page, 10);
       var is_ajax = req.query.is_ajax || req.xhr;
 
-      var sort = 'visits'
+      var sort = 'visits';
 
       var filters = JSON.parse(req.query.filters || '{}');
       var query = {
@@ -35,10 +35,11 @@ module.exports = function (app) {
         page: page,
         aggs: req.query.filters,
         per_page: 16
-      }
+      };
 
       return req.client.search(query)
         .then(function (result) {
+          console.log(result.data.items);
           return res.render('basic/catalog', {
             items: result.data.items,
             pagination: result.pagination,
