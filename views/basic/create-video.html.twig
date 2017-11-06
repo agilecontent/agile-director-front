@@ -1,4 +1,15 @@
-<div id="create-video">
+<script>
+  var createVideoGrid = $('#create-video ul');
 
+  $('#assets-to-choose .item').click(function() {
+    var liEl = document.createElement('li');
+    var clonedItem = liEl.append($(this).clone());
+
+    createVideoGrid.append(clonedItem);
+  })
+</script>
+
+<div id="create-video">
+  <ul></ul>
 </div>
 
