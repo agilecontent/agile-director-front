@@ -29,21 +29,6 @@
   <div class="row">
 
     <div class="col-md-2" style="padding-left: 0;">
-
-      {#sorting not available yet#}
-      {#<h5 style="margin-bottom: 5px;"><strong style="color: #337ab7;">Sort by</strong></h5>
-
-      {% for key, val in sortings %}
-      <div class="radio">
-        <label>
-          <input type="radio" {% if key == sort %}checked{% endif %} name="sortOptions" value="option_{{ key }}">
-          {{ key }}
-        </label>
-      </div>
-      {% endfor %}#}
-
-      {#{{ aggregations | debug }}#}
-      {#{% for val in (aggregations | sortObject('position', 'desc')) %}#}
       {% for val in (aggregations | sortObject('position', 'desc')) %}
       <div class="">
         <h5 style="margin-bottom: 5px;"><strong style="color: #337ab7;">{{ aggregations[val.key].title }}</strong></h5>
