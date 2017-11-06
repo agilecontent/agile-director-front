@@ -86,6 +86,9 @@
 #create-video li .content:hover .remove-item{
   display:block;
 }
+#create-video li .content:hover .order{
+  display:none;
+}
 #create-video li .config{
   display:none;
   padding:5px;
@@ -102,4 +105,4 @@
 }
 
 
-/*# sourceMappingURL=../maps/css/others-990aa9d8ef.min.css.map */
+/*# sourceMappingURL=../maps/css/others-856adf1a5b.min.css.map */

@@ -12,6 +12,10 @@
       });
     });
 
+    function removeItem() {
+      console.log('remove');
+    }
+
     function createEl (el) {
       return document.createElement(el);
     }
@@ -42,6 +46,8 @@
       order.append(orderNumber, removeItem);
       container.append(img, order);
       li.append(container);
+
+      li.addEventListener('click', removeItem);
 
       return li;
     }
