@@ -1,0 +1,15 @@
+#create-video {
+  li {
+    float: left;
+
+    img {
+      @extend .img-thumbnail;
+    }
+
+    .config {
+      input {
+        float: left;
+      }
+    }
+  }
+}

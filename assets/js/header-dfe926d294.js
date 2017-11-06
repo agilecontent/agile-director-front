@@ -2,7 +2,6 @@
 
 (["1"], [], false, function($__System) {
 var require = this.require, exports = this.exports, module = this.module;
-!function(e){function r(e,r){for(var n=e.split(".");n.length;)r=r[n.shift()];return r}function n(n){if("string"==typeof n)return r(n,e);if(!(n instanceof Array))throw new Error("Global exports must be a string or array.");for(var t={},o=!0,f=0;f<n.length;f++){var i=r(n[f],e);o&&(t["default"]=i,o=!1),t[n[f].split(".").pop()]=i}return t}function t(r){if(Object.keys)Object.keys(e).forEach(r);else for(var n in e)a.call(e,n)&&r(n)}function o(r){t(function(n){if(-1==l.call(s,n)){try{var t=e[n]}catch(o){s.push(n)}r(n,t)}})}var f,i=$__System,a=Object.prototype.hasOwnProperty,l=Array.prototype.indexOf||function(e){for(var r=0,n=this.length;n>r;r++)if(this[r]===e)return r;return-1},s=["_g","sessionStorage","localStorage","clipboardData","frames","frameElement","external","mozAnimationStartTime","webkitStorageInfo","webkitIndexedDB","mozInnerScreenY","mozInnerScreenX"];i.set("@@global-helpers",i.newModule({prepareGlobal:function(r,t,i){var a=e.define;e.define=void 0;var l;if(i){l={};for(var s in i)l[s]=e[s],e[s]=i[s]}return t||(f={},o(function(e,r){f[e]=r})),function(){var r;if(t)r=n(t);else{r={};var i,s;o(function(e,n){f[e]!==n&&"undefined"!=typeof n&&(r[e]=n,"undefined"!=typeof i?s||i===n||(s=!0):i=n)}),r=s?r:i}if(l)for(var u in l)e[u]=l[u];return e.define=a,r}}}))}("undefined"!=typeof self?self:global);
 $__System.registerDynamic("2", [], true, function($__require, exports, module) {
   ;
   var define,
@@ -1675,20 +1674,11 @@ $__System.registerDynamic("4", [], true, function($__require, exports, module) {
   return module.exports;
 });
 
-$__System.registerDynamic('5', [], false, function ($__require, $__exports, $__module) {
-  var _retrieveGlobal = $__System.get("@@global-helpers").prepareGlobal($__module.id, null, null);
-
-  (function ($__global) {
-    console.log('hola');
-  })(this);
-
-  return _retrieveGlobal();
-});
-$__System.register('1', ['2', '3', '4', '5'], function (_export, _context) {
+$__System.register('1', ['2', '3', '4'], function (_export, _context) {
   "use strict";
 
   return {
-    setters: [function (_) {}, function (_2) {}, function (_3) {}, function (_4) {}],
+    setters: [function (_) {}, function (_2) {}, function (_3) {}],
     execute: function () {}
   };
 });
@@ -1701,4 +1691,4 @@ $__System.register('1', ['2', '3', '4', '5'], function (_export, _context) {
   else
     factory();
 });
-//# sourceMappingURL=../maps/js/header-54763e115b.js.map
+//# sourceMappingURL=../maps/js/header-dfe926d294.js.map
