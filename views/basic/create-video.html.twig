@@ -9,12 +9,11 @@
       createVideoGrid.classList.toggle('show-config');
     });
 
-    function onRemoveItem() {
+    function onRemoveItem(event) {
       var itemRemoved = false;
-      console.log('removing')
       Array.from(createVideoGrid.children).forEach(function(item) {
-        console.log(this, item);
-        if(item === this) {
+        console.log(item, event.target.closest('li'));
+        if(item === event.target.closest('li')) {
           createVideoGrid.removeChild(this);
         } else if (itemRemoved) {
           var nextItem = item.querySelector('.order');
