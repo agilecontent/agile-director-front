@@ -6,6 +6,7 @@
     list-style-type: none;
     margin-bottom: 10px;
     overflow: hidden;
+    padding: 0;
 
     .content {
       position: relative;
@@ -33,6 +34,7 @@
     }
 
     .config {
+      display: none;
       padding: 5px;
 
       input {

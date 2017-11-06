@@ -49,6 +49,7 @@
     list-style-type:none;
     margin-bottom:10px;
     overflow:hidden;
+    padding:0;
 }
 #create-video li .content{
     position:relative
@@ -77,13 +78,15 @@
     left:50%;
 }
 #create-video li .config{
+    display:none;
     padding:5px;
 }
 #create-video li .config input{
+    padding:2px 5px;
     float:left;
     margin-bottom:5px;
     width:100%;
 }
 
 
-/*# sourceMappingURL=../maps/css/others-cf5e2787c8.min.css.map */
+/*# sourceMappingURL=../maps/css/others-db8e82ff1f.min.css.map */

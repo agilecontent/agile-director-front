@@ -2,6 +2,15 @@
   document.addEventListener('DOMContentLoaded', function() {
     var createVideoGrid = document.querySelector('#create-video ul');
     var items = document.querySelectorAll('#assets-to-choose .item');
+    var advancedOptions = document.querySelector('#advanced');
+
+    // Toggle advanced
+    advancedOptions.addEventListener('click', function() {
+      Array.from(createVideoGrid.children).forEach(function(item) {
+        var itemConfig = item.querySelector('.config');
+        itemConfig.classList.toggle('show');
+      });
+    });
 
     function createEl (el) {
       return document.createElement(el);
@@ -22,7 +31,6 @@
 
       // Add classes
       container.className = 'content';
-      li.className = 'col-sm-2';
       img.className = 'img-thumbnail img-responsive';
       orderNumber.className = 'order';
 
@@ -47,9 +55,9 @@
 
       // Placeholders
       duration.placeholder = 'Duration';
-      delay.placeholder = 'Delay';
+      delay.placeholder = 'Espera';
 
-      container.append(duration, delay);
+      container.append(delay, duration);
 
       return container;
     }
@@ -72,8 +80,8 @@
   });
 </script>
 
-<h3>Video</h3>
-<div id="create-video" class="row">
+<h3>Video <span class="pull-right" id="advanced">Advanced</span></h3>
+<div id="create-video">
   <ul></ul>
 </div>
 
