@@ -10,6 +10,17 @@
 
     .content {
       position: relative;
+      cursor: pointer;
+
+      .remove-item {
+        display: none;
+      }
+
+      &:hover {
+        .remove-item {
+          display: block;
+        }
+      }
 
       & > span {
         position: absolute;
@@ -45,4 +56,9 @@
       }
     }
   }
+}
+
+#advanced {
+  font-size: 13px;
+  cursor: pointer;
 }

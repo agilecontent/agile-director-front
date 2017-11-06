@@ -23,19 +23,23 @@
       var order = createEl('span');
       var orderNumber = createEl('span');
       var container = createEl('div');
+      var removeItem = createEl('span');
 
       // Add data
       li.setAttribute('data', "mediaURL: '"+ item.mediaURL +"', image: '"+ item.image +"'");
       img.src = item.image;
       orderNumber.innerHTML = item.order;
+      removeItem.innerHTML = 'x';
 
       // Add classes
+      li.className = 'col-sm-3';
       container.className = 'content';
       img.className = 'img-thumbnail img-responsive';
       orderNumber.className = 'order';
+      removeItem.className = 'remove-item';
 
       // Put elements together
-      order.append(orderNumber);
+      order.append(orderNumber, removeItem);
       container.append(img, order);
       li.append(container);
 
