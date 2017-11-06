@@ -64,7 +64,7 @@
   font-weight:bold;
   text-shadow:1px 1px 2px white;
 }
-#create-video li .content > span .order{
+#create-video li .content > span .order, #create-video li .content > span .remove-item{
   position:absolute;
   -webkit-transform:translate(-50%, -50%);
      -moz-transform:translate(-50%, -50%);
@@ -80,6 +80,8 @@
 }
 #create-video li .content .remove-item{
   display:none;
+  color:#ea3131;
+  text-shadow:none;
 }
 #create-video li .content:hover .remove-item{
   display:block;
@@ -100,4 +102,4 @@
 }
 
 
-/*# sourceMappingURL=../maps/css/others-76a6833b46.min.css.map */
+/*# sourceMappingURL=../maps/css/others-990aa9d8ef.min.css.map */
