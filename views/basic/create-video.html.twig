@@ -11,7 +11,9 @@
 
     function onRemoveItem() {
       var itemRemoved = false;
+      console.log('removing')
       Array.from(createVideoGrid.children).forEach(function(item) {
+        console.log(this, item);
         if(item === this) {
           createVideoGrid.removeChild(this);
         } else if (itemRemoved) {
