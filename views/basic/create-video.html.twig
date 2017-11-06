@@ -12,7 +12,7 @@
       });
     });
 
-    function removeItem() {
+    function onRemoveItem() {
       console.log('remove');
     }
 
@@ -47,7 +47,7 @@
       container.append(img, order);
       li.append(container);
 
-      li.addEventListener('click', removeItem);
+      li.addEventListener('click', onRemoveItem);
 
       return li;
     }
