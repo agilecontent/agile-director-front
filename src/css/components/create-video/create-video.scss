@@ -5,12 +5,12 @@
   li {
     list-style-type: none;
     margin-bottom: 10px;
-
+    overflow: hidden;
 
     .content {
       position: relative;
 
-      span {
+      & > span {
         position: absolute;
         top: 0;
         left: 0;

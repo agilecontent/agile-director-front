@@ -18,7 +18,7 @@
       // Add data
       li.setAttribute('data', "mediaURL: '"+ item.mediaURL +"', image: '"+ item.image +"'");
       img.src = item.image;
-      orderNumber.innerHTML = orderNumber.order;
+      orderNumber.innerHTML = item.order;
 
       // Add classes
       container.className = 'content';
@@ -44,6 +44,10 @@
       container.className = 'config';
       duration.className = 'duration';
       delay.className = 'delay';
+
+      // Placeholders
+      duration.placeholder = 'Duration';
+      delay.placeholder = 'Delay';
 
       container.append(duration, delay);
 
