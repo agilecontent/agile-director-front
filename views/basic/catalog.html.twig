@@ -1,48 +1,145 @@
-{% extends "basic/layout2.html.twig" %}
-{% block title %}{% endblock %}
-{% block description %}{% endblock %}
+{% if is_ajax == false %}
+  {% extends "basic/layout.html.twig" %}
+  {% block title %}{% endblock %}
+  {% block description %}{% endblock %}
+{% endif %}
+
 {% block content %}
-  <div class="main-content assets-content">
-    <div class="assets packery-wrapper">
-      <div class="packery-sizer"></div>
-      <div class="packery-container">
-        {% for item in items %}
-          <div class="packery-object">
-            <article class="{{ item.type }}">
-              <img src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}"
-                   alt="{{ item.name }}">
-              <aside>
-                <div class="coverall"/>
-                <div class="content">
-                  <ul class="icon-ul meta-data">
-                    <li class="author"><i class="icon-li icon icon-user"></i>{{ item.author }}</li>
-                    <li class="views"><i class="icon-li icon icon-eye"></i>{{ item.views }}</li>
-                  </ul>
-                </div>
-                <div class="date">
-                  <div class="clock">
-                    <i class="icon icon-clock-o"></i>&nbsp;0
-                  </div>
-                  <div class="date-wrap">
-                    <span class="day">{{ item.pubDate }}</span>
-                    <span class="month">{{ item.pubDate }}</span>
-                  </div>
-                </div>
-              </aside>
-              <header>
-                <h1>{{ item.name | truncate(100, true) }}</h1>
-              </header>
-              <div class="layer">
-                <div>
-                  <a href>
-                    <i class="icon icon-minus-circled"></i>
-                  </a>
-                </div>
-              </div>
-            </article>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12" style="padding-left: 0;">
+      <div id="custom-search-input">
+        <form action="/catalog" method="GET">
+          <div class="input-group col-md-12">
+            <input type="text" id="main_query" class="form-control input-lg" name="query" value="{{ query }}" placeholder="Search items.." />
+            <span class="input-group-btn">
+              <button class="btn btn-info btn-lg" type="button">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </span>
           </div>
-        {% endfor %}
+        </form>
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-2" style="padding-left: 0;">
+
+      {#sorting not available yet#}
+      {#<h5 style="margin-bottom: 5px;"><strong style="color: #337ab7;">Sort by</strong></h5>
+
+      {% for key, val in sortings %}
+      <div class="radio">
+        <label>
+          <input type="radio" {% if key == sort %}checked{% endif %} name="sortOptions" value="option_{{ key }}">
+          {{ key }}
+        </label>
+      </div>
+      {% endfor %}#}
+
+      {#{{ aggregations | debug }}#}
+      {#{% for val in (aggregations | sortObject('position', 'desc')) %}#}
+      {% for val in (aggregations | sortObject('position', 'desc')) %}
+      <div class="">
+        <h5 style="margin-bottom: 5px;"><strong style="color: #337ab7;">{{ aggregations[val.key].title }}</strong></h5>
+        <ul class="browse-list list-unstyled long-list" style="margin-bottom: 0;">
+          {% for term in aggregations[val.key].buckets %}
+          <li ng-repeat="bucket in agg.buckets">
+          <div class="checkbox block" style="margin-top: 0; margin-bottom: 0;">
+            <label>
+              <input class="checkbox" type="checkbox" {% if (filter and filter.val == term.key and filter.key == val.key) or in_array(term.key, filters[val.key]) %}checked="checked"{% endif %} onclick="onAggregationClick(this, '{{aggregations[val.key].name}}', '{{ term.key }}');">
+              {{ term.key }} ({{ term.doc_count }})
+            </label>
+          </div>
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% if aggregations[val.key].type == 'terms' %}
+          <p class=""><a href="/category/{{ aggregations[val.key].name }}">See all</a></p>
+        {% endif %}
+        <div class="clearfix"></div>
+      </div>
+      {% endfor %}
+
+    </div>
+    <div class="col-md-10">
+
+      {% if settings.popular_queries %}
+      <ul class="subnav" style="">
+        <li>Random: </li>
+        {% for val in settings.popular_queries | split | shuffle | slice(0, 10) %}
+          <li><a href="/catalog?query={{ val }}">{{ val }}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+
+      <div class="breadcrumbs">
+        {% for key, val in filters %}
+        {% for term in val %}
+        <span class="label label-default" style="margin-left: 5px;">{{ term }}
+          <span onclick="removeFilter('{{ key }}', '{{ term }}');" style="cursor: pointer" class="glyphicon glyphicon-remove"></span>
+        </span>
+        {% endfor %}
+        {% endfor %}
+
+        {% if (query) %}
+        <span class="label label-default" style="margin-left: 5px;">{{ query }}
+        </span>
+        {% endif %}
+
+        {% if (filter) %}
+        <span class="label label-default" style="margin-left: 5px;">{{ filter.val }}
+          <span onclick="removeFilter('{{ filter.key }}', '{{ filter.val }}');" style="cursor: pointer" class="glyphicon glyphicon-remove"></span>
+        </span>
+        {% endif %}
+      </div>
+
+      <div class="clearfix"></div>
+
+      {% if filter and not filter_original_value %}
+        <h3>Not configured yet</h3>
+        <p style="margin-top: 10px;">Nice URL's are not configured. You can do that in admin panel.
+      {% else %}
+        <h3>List of items ({{pagination.total}})</h3>
+
+        <div class="items">
+          {% for item in items %}
+          <div class="col-xs-3 col-md-3" style="height: 200px;">
+            <a href="{% if item.permalink %}/item/{{ item.permalink }}{% else %}/id/{{ item.id }}{% endif %}?s={{ query }}" class="">
+              <img class="img-thumbnail" src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}" alt="{{ item.name }}">
+              <p>{{ item.name }}</p>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="clearfix"></div>
+
+        {% include "general/pagination.html.twig" ignore missing %}
+
+
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+{% block before_head_end %}
+<link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/start/jquery-ui.css" />
+{% endblock %}
+
+{% block before_body_end %}
+{#<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>#}
+{% include "general/autocomplete.html.twig" ignore missing %}
+
 {% endblock %}
