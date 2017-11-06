@@ -11,16 +11,22 @@
     function createElementStructure (item) {
       var li = createEl('li');
       var img = createEl('img');
+      var order = createEl('span');
+      var container = createEl('div');
 
       // Add data
       li.setAttribute('data', "mediaURL: '"+ item.mediaURL +"', image: '"+ item.image +"'");
       img.src = item.image;
+      order.innerHTML = item.order;
 
       // Add classes
+      container.className = 'content';
       li.className = 'col-sm-3';
       img.className = 'img-thumbnail img-responsive';
 
-      li.append(img);
+      container.append(img, order);
+
+      li.append(container);
 
       return li;
     }
@@ -45,7 +51,8 @@
       item.addEventListener('click', function() {
         var data = {
           mediaURL: item.getAttribute('data-media-url'),
-          image: item.getAttribute('data-image')
+          image: item.getAttribute('data-image'),
+          order: createVideoGrid.children.length + 1
         };
 
         var element = createElementStructure(data);
@@ -58,6 +65,7 @@
   });
 </script>
 
+<h3>Video</h3>
 <div id="create-video">
   <ul></ul>
 </div>

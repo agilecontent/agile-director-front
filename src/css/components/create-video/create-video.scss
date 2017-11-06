@@ -1,8 +1,30 @@
 #create-video {
+  ul {
+    padding: 0;
+  }
   li {
+    list-style-type: none;
+    margin-bottom: 10px;
+
+
+    .content {
+      position: relative;
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+      }
+    }
+
     .config {
+      padding: 5px;
+
       input {
         float: left;
+        margin-bottom: 5px;
+        width: 100%;
       }
     }
   }

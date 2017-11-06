@@ -42,12 +42,30 @@
     color:#333;
     font-weight:normal;
 }
+#create-video ul{
+    padding:0;
+}
 #create-video li{
-    float:left;
+    list-style-type:none;
+    margin-bottom:10px;
+}
+#create-video li .content{
+    position:relative;
+}
+#create-video li .content span{
+    position:absolute;
+    top:0;
+    left:0;
+    text-align:center;
+}
+#create-video li .config{
+    padding:5px;
 }
 #create-video li .config input{
     float:left;
+    margin-bottom:5px;
+    width:100%;
 }
 
 
-/*# sourceMappingURL=../maps/css/others-6ad5cc9dde.min.css.map */
+/*# sourceMappingURL=../maps/css/others-55cd91b0d4.min.css.map */
