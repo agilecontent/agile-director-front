@@ -103,29 +103,23 @@
 
       <div class="clearfix"></div>
 
-      {% if filter and not filter_original_value %}
-        <h3>Not configured yet</h3>
-        <p style="margin-top: 10px;">Nice URL's are not configured. You can do that in admin panel.
-      {% else %}
-        <h3>List of items ({{pagination.total}})</h3>
+      {% include "basic/create-video.html.twig" %}
 
-        <div class="items row" id="assets-to-choose">
-          {% for item in items %}
-          <div class="col-xs-3 col-md-3" style="height: 200px;">
-            <div data-media-url="{{ item.mediaURL }}" data-image="{{ item.image }}">
-              <img class="img-thumbnail" src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}" alt="{{ item.name }}">
-              <p>{{ item.name }}</p>
-            </div>
+      <h3>List of items ({{pagination.total}})</h3>
+      <div class="items row" id="assets-to-choose">
+        {% for item in items %}
+        <div class="col-xs-3 col-md-3" style="height: 200px;">
+          <div data-media-url="{{ item.mediaURL }}" data-image="{{ item.image }}">
+            <img class="img-thumbnail" src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}" alt="{{ item.name }}">
+            <p>{{ item.name }}</p>
           </div>
-          {% endfor %}
         </div>
+        {% endfor %}
+      </div>
 
-        <div class="clearfix"></div>
+      <div class="clearfix"></div>
 
-        {% include "general/pagination.html.twig" ignore missing %}
-
-
-      {% endif %}
+      {% include "general/pagination.html.twig" ignore missing %}
     </div>
   </div>
 </div>
