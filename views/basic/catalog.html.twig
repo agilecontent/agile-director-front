@@ -112,10 +112,11 @@
         <div class="items">
           {% for item in items %}
           <div class="col-xs-3 col-md-3" style="height: 200px;">
-            <a href="{% if item.permalink %}/item/{{ item.permalink }}{% else %}/id/{{ item.id }}{% endif %}?s={{ query }}" class="">
+            {{ item }}
+            <div href="{% if item.permalink %}/item/{{ item.permalink }}{% else %}/id/{{ item.id }}{% endif %}?s={{ query }}" class="">
               <img class="img-thumbnail" src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}" alt="{{ item.name }}">
               <p>{{ item.name }}</p>
-            </a>
+            </div>
           </div>
           {% endfor %}
         </div>
