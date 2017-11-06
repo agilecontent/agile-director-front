@@ -15,7 +15,7 @@
 
       Array.from(createVideoGrid.children).forEach(function(item) {
         if(item.querySelector('.content') === removingItem) {
-          createVideoGrid.removeChild(removingItem);
+          createVideoGrid.removeChild(removingItem.closest('li'));
           itemRemoved = true;
         } else if (itemRemoved) {
           var nextItemOrder = item.querySelector('.order');
@@ -48,7 +48,7 @@
       // Add classes
       li.className = 'col-sm-3';
       container.className = 'content';
-      img.className = 'img-thumbnail img-responsive';
+      img.className = 'img-responsive';
       orderNumber.className = 'order';
       removeItem.className = 'remove-item';
 
