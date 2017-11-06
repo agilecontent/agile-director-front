@@ -11,10 +11,11 @@
 
     function onRemoveItem(event) {
       var itemRemoved = false;
+      var removingItem = event.target.closest('li');
       Array.from(createVideoGrid.children).forEach(function(item) {
-        console.log(item, event.target.closest('li'));
-        if(item === event.target.closest('li')) {
-          createVideoGrid.removeChild(this);
+        console.log(item, removingItem);
+        if(item === removingItem) {
+          createVideoGrid.removeChild(removingItem);
         } else if (itemRemoved) {
           var nextItem = item.querySelector('.order');
           var currentIndex = nextItem.innerHTML;
