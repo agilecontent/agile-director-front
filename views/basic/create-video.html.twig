@@ -15,6 +15,9 @@
       // Add data
       li.setAttribute('data', "mediaURL: '"+ item.mediaURL +"', image: '"+ item.image +"'");
       img.src = item.image;
+
+      // Add classes
+      li.className = 'co-sm-3';
       img.className = 'img-thumbnail';
 
       li.append(img);
