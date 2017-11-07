@@ -118,9 +118,9 @@
       if(itemsData.length) {
         fetch("/new-video", {
           method: "POST",
-          body: {
-            items: JSON.stringify(itemsData)
-          }
+          body: JSON.stringify({
+            items: itemsData
+          })
         }).then(function(res) {
           console.log(res);
         });
