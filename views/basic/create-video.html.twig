@@ -103,7 +103,8 @@
 
     function extractItemData (item) {
       return {
-        http: item.getAttribute('data-media-url')
+        http: item.getAttribute('data-media-url'),
+        type: 'video'
       };
     }
 
