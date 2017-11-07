@@ -223,8 +223,7 @@ module.exports = function (app) {
    * Create new Video
    */
   app.post('/new-video', function(req, res) {
-    console.log(req.body);
-    req.client.newVideo({http: 'dsfdsf'}).then(function(result) {
+    req.client.newVideo(req.body).then(function(result) {
       res.json(result);
     })
   });
@@ -399,7 +398,7 @@ module.exports = function (app) {
       });
     }
 
-    var json = JSON.parse(req.body.collection)
+    var json = JSON.parse(req.body.collection);
 
     req.client.addCollection(json)
       .then(function (result) {
