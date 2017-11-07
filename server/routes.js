@@ -223,6 +223,7 @@ module.exports = function (app) {
    * Create new Video
    */
   app.post('/new-video', function(req, res) {
+    console.log('BodyPrint');
     console.log(req.body.items);
     req.client.newVideo(req.body).then(function(result) {
       res.json(result);
