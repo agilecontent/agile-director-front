@@ -446,7 +446,7 @@ AgileAPI.prototype = {
       json: true
     })
       .then(function (res) {
-        return JSON.parse(res.body);
+        return res.body;
       });
   }
 };
