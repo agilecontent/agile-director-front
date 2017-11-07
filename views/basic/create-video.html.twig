@@ -117,7 +117,8 @@
 
       if(itemsData.length) {
         fetch("/new-video", {
-          method: "POST"
+          method: "POST",
+          body: itemsData
         }).then(function(res) {
           console.log(res);
         });
