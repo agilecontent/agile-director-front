@@ -224,7 +224,7 @@ module.exports = function (app) {
    */
   app.post('/new-video', function(req, res) {
     console.log('BodyPrint');
-    console.log(JSON.parse(req.body.json));
+    console.log(JSON.parse(req.body));
     req.client.newVideo(req.body).then(function(result) {
       res.json(result);
     });
