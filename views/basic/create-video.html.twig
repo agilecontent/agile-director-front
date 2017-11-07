@@ -119,7 +119,7 @@
         fetch("/new-video", {
           method: "POST",
           body: {
-            items: itemsData
+            items: JSON.stringify(itemsData)
           }
         }).then(function(res) {
           console.log(res);

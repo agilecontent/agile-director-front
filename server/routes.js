@@ -223,8 +223,8 @@ module.exports = function (app) {
    * Create new Video
    */
   app.post('/new-video', function(req, res) {
-    console.log(req);
-    req.client.newVideo(req.body).then(function(result) {
+    console.log(req.body);
+    req.client.newVideo({http: 'dsfdsf'}).then(function(result) {
       res.json(result);
     })
   });
