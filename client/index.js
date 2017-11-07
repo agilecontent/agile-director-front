@@ -440,7 +440,7 @@ AgileAPI.prototype = {
 
   newVideo: function (videoConfig) {
     var self = this;
-    return request.getAsync({
+    return request.postAsync({
       url: self.backendUrl + '/new-video',
       body: videoConfig,
       json: true

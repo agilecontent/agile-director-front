@@ -235,7 +235,7 @@ module.exports = function (app) {
    */
   app.get('/field-autocomplete', function (req, res) {
 
-    var field = req.query.field
+    var field = req.query.field;
     /*if (['tags'].indexOf(field) === -1) {
       return res.status(400).json({
       })
@@ -255,7 +255,7 @@ module.exports = function (app) {
           }
         }))
       })
-  })
+  });
 
   /**
    * generate sitemap for website
