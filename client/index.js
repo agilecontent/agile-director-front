@@ -437,7 +437,6 @@ AgileAPI.prototype = {
         return JSON.parse(res.body);
       });
   },
-
   newVideo: function (videoConfig) {
     var self = this;
     return request.postAsync({
