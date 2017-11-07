@@ -220,6 +220,17 @@ module.exports = function (app) {
   });
 
   /**
+   * Create new Video
+   */
+  app.post('/new-video', function(req, res) {
+    req.client.newVideo({
+      http: 'http://res.cloudinary.com/dgiww3flq/video/upload/v1509378628/jzpn9q44uddh7tndmxqm.mp4'
+    }).then(function(result) {
+      res.json(result);
+    })
+  });
+
+  /**
    * generate autocomplete for specific field
    */
   app.get('/field-autocomplete', function (req, res) {
@@ -536,4 +547,4 @@ module.exports = function (app) {
         });
       })
   });
-}
+};

@@ -436,6 +436,18 @@ AgileAPI.prototype = {
       .then(function (res) {
         return JSON.parse(res.body);
       });
+  },
+
+  newVideo: function (videoConfig) {
+    var self = this;
+    return request.getAsync({
+      url: self.backendUrl + '/new-video',
+      body: videoConfig,
+      json: true
+    })
+      .then(function (res) {
+        return JSON.parse(res.body);
+      });
   }
 };
 
