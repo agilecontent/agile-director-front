@@ -10,14 +10,15 @@
     });
 
     function onRemoveItem(event) {
-      var itemRemoved = false;
+      var itemhasBeenRemoved = false;
       var removingItem = event.currentTarget;
 
       Array.from(createVideoGrid.children).forEach(function(item) {
         if(item.querySelector('.content') === removingItem) {
           createVideoGrid.removeChild(removingItem.closest('li'));
-          itemRemoved = true;
-        } else if (itemRemoved) {
+          itemhasBeenRemoved = true;
+        } else if (itemhasBeenRemoved) {
+          // Update next items order
           var nextItemOrder = item.querySelector('.order');
           console.log(nextItemOrder);
           var currentIndex = nextItemOrder.innerHTML;
@@ -46,7 +47,7 @@
       removeItem.innerHTML = 'x';
 
       // Add classes
-      li.className = 'col-sm-3';
+      li.className = 'col-sm-3 col-xs-6';
       container.className = 'content';
       img.className = 'img-responsive';
       orderNumber.className = 'order';
@@ -100,7 +101,11 @@
   });
 </script>
 
-<h3>Video <span class="pull-right" id="advanced">Advanced</span></h3>
+<h3>
+  <span>Video</span>
+  <button class="btn btn-info btn-md">Create</button>
+  <span style="margin-top: 8px;" class="pull-right" id="advanced">Advanced</span>
+</h3>
 <div id="create-video">
   <ul></ul>
 </div>
