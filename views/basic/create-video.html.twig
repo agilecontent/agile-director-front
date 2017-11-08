@@ -104,7 +104,9 @@
     function extractItemData (item) {
       return {
         http: item.getAttribute('data-media-url'),
-        type: 'video'
+        type: 'video',
+        delay: item.querySelector('.delay').value,
+        duration: item.querySelector('.duration').value
       };
     }
 
@@ -126,8 +128,8 @@
           body: JSON.stringify({
             items: itemsData
           })
-        }).then(function(res) {
-          console.log(res);
+        }).then(function() {
+          window.location = window.location.origin + '/results'
         });
       }
     });
