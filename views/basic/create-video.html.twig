@@ -21,7 +21,6 @@
         } else if (itemHasBeenRemoved) {
           // Update next items order
           var nextItemOrder = item.querySelector('.order');
-          console.log(nextItemOrder);
           var currentIndex = nextItemOrder.innerHTML;
           nextItemOrder.innerHTML = parseInt(currentIndex) - 1;
         }
@@ -49,7 +48,7 @@
       removeItem.innerHTML = 'x';
 
       // Add classes
-      li.className = 'col-sm-3 col-xs-6';
+      li.className = 'col-sm-3 col-md-3 col-xs-12';
       container.className = 'content';
       img.className = 'img-responsive';
       orderNumber.className = 'order';
@@ -69,18 +68,21 @@
     function createConfigElements () {
       var container = createEl('div');
       var duration = createEl('input');
-      var delay = createEl('input');
+      var text = createEl('input');
+      var textDuration = createEl('input');
 
       // Add classes
       container.className = 'config';
       duration.className = 'duration';
-      delay.className = 'delay';
+      text.className = 'object-text';
+      textDuration.className = 'text-duration';
 
       // Placeholders
-      duration.placeholder = 'Duration';
-      delay.placeholder = 'Espera';
+      duration.placeholder = 'Video Duration';
+      text.placeholder = 'Text';
+      textDuration.placeholder = 'Text duration';
 
-      container.append(delay, duration);
+      container.append(duration, text, textDuration);
 
       return container;
     }
@@ -105,7 +107,8 @@
       return {
         http: item.getAttribute('data-media-url'),
         type: 'video',
-        delay: item.querySelector('.delay').value,
+        textDuration: item.querySelector('.text-duration').value,
+        text: item.querySelector('.object-text').value,
         duration: item.querySelector('.duration').value
       };
     }
@@ -157,7 +160,6 @@
       </div>
     </div>
   </div>
-
   <ul></ul>
 </div>
 
