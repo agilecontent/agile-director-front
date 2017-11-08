@@ -125,8 +125,8 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            name: document.querySelector('#create-video input.name').value,
-            description: document.querySelector('#create-video input.description').value,
+            name: document.querySelector('#create-video input.video-name').value,
+            description: document.querySelector('#create-video input.video-description').value,
             items: itemsData
           })
         }).then(function() {
