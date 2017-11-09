@@ -14,6 +14,12 @@
     overflow: hidden;
     padding: 0;
 
+    img {
+      height: 200px;
+      width: 200px;
+      object-fit: cover;
+    }
+
     &:first-child {
       .config .delay {
         display: none;
@@ -111,5 +117,11 @@
 
   .add-overlay {
     display: block;
+  }
+
+  img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
   }
 }

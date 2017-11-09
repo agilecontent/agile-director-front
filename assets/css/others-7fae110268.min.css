@@ -77,6 +77,12 @@
   top:50%;
   left:50%;
 }
+#create-video li img{
+  height:200px;
+  width:200px;
+  -o-object-fit:cover;
+     object-fit:cover;
+}
 #create-video li .content{
   position:relative;
   cursor:pointer;
@@ -140,6 +146,12 @@
 #assets-to-choose .item-thumb-container:hover .add-overlay{
   display:block;
 }
+#assets-to-choose .item-thumb-container:hover img{
+  height:200px;
+  width:200px;
+  -o-object-fit:cover;
+     object-fit:cover;
+}
 
 
-/*# sourceMappingURL=../maps/css/others-78f3f7a940.min.css.map */
+/*# sourceMappingURL=../maps/css/others-7fae110268.min.css.map */

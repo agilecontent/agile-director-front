@@ -43,6 +43,7 @@
       // Add data and content
       li.setAttribute('data-media-url', item.mediaURL);
       li.setAttribute('data-image', item.image);
+      li.setAttribute('data-type', item.type);
       img.src = item.image;
       orderNumber.innerHTML = item.order;
       removeItem.innerHTML = 'x';
@@ -92,7 +93,8 @@
         var data = {
           mediaURL: item.getAttribute('data-media-url'),
           image: item.getAttribute('data-image'),
-          order: createVideoGrid.children.length + 1
+          order: createVideoGrid.children.length + 1,
+          type: item.getAttribute('data-type')
         };
 
         var element = createElementStructure(data);
