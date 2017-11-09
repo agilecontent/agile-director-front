@@ -16,7 +16,8 @@
 
     img {
       height: 200px;
-      width: 200px;
+      min-width: 100%;
+      -o-object-fit: cover;
       object-fit: cover;
     }
 
@@ -112,16 +113,21 @@
   }
 }
 
-#assets-to-choose .item-thumb-container:hover {
-  position: relative;
-
-  .add-overlay {
-    display: block;
-  }
-
+#assets-to-choose .item-thumb-container {
   img {
     height: 200px;
-    width: 200px;
+    min-width: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
   }
+
+  &:hover {
+     position: relative;
+
+     .add-overlay {
+       display: block;
+     }
+   }
 }
+
+
