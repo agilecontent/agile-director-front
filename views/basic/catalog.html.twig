@@ -95,7 +95,7 @@
       <h3>List of items ({{pagination.total}})</h3>
       <div class="items row" id="assets-to-choose">
         {% for item in items %}
-        <div class="col-xs-4 col-md-3 item" style="margin-bottom: 30px" data-media-url="{{ item.mediaURL }}" data-image="{{ item.image }}">
+        <div class="col-xs-4 col-md-3 item" style="margin-bottom: 30px" data-media-url="{{ item.mediaURL }}" data-image="{{ item.image }}" data-type="{{ item.mediaURL }}">
           <div>
             <div class="item-thumb-container">
               <span class="add-overlay">

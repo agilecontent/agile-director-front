@@ -106,7 +106,7 @@
     function extractItemData (item) {
       return {
         http: item.getAttribute('data-media-url'),
-        type: 'video',
+        type: item.getAttribute('data-type'),
         textDuration: item.querySelector('.text-duration').value,
         text: item.querySelector('.object-text').value,
         duration: item.querySelector('.duration').value
