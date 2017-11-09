@@ -21,7 +21,7 @@
   "license": "Apache 2.0",
   "dependencies": {
     "JSONStream": "^1.2.1",
-    "agile-director-back": "0.0.52",
+    "agile-director-back": "0.0.53",
     "bluebird": "^3.3.5",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.6",
