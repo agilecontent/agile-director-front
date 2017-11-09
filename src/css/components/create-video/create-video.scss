@@ -114,11 +114,24 @@
 }
 
 #assets-to-choose .item-thumb-container {
+  position: relative;
+
   img {
     height: 200px;
     min-width: 100%;
     -o-object-fit: cover;
     object-fit: cover;
+  }
+
+  .item-type {
+    position: absolute;
+    top: 100%;
+    left: 5px;
+    background: #5ac0de;
+    padding: 5px;
+    margin-top: -29px;
+    color: white;
+    border-radius: 0 3px 0 0;
   }
 
   &:hover {

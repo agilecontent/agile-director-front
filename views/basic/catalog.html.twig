@@ -98,6 +98,21 @@
         <div class="col-xs-4 col-md-3 item" style="margin-bottom: 30px" data-media-url="{{ item.mediaURL }}" data-image="{{ item.image }}" data-type="{{ item.typo }}">
           <div>
             <div class="item-thumb-container">
+              {% if item.typo %}
+
+                {% if item.typo == 'image' %}
+                  <i class="item-type glyphicon glyphicon-picture"></i>
+                {% endif %}
+
+                {% if item.typo == 'audio' %}
+                  <i class="item-type glyphicon glyphicon-volume-up"></i>
+                {% endif %}
+
+                {% if item.typo == 'video' %}
+                  <i class="item-type glyphicon glyphicon-facetime-video"></i>
+                {% endif %}
+
+              {% endif %}
               <span class="add-overlay">
                 <span>+</span>
               </span>
