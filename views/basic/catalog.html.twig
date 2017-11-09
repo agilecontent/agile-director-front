@@ -98,7 +98,9 @@
         <div class="col-xs-4 col-md-3 item" style="margin-bottom: 30px" data-media-url="{{ item.mediaURL }}" data-image="{{ item.image }}">
           <div>
             <img class="img-thumbnail" src="{% if item.image %}{{ item.image }}{% else %}{{ image }} {% endif %}" alt="{{ item.name }}">
-            <p class="hidden-xs">{{ item.name }}</p>
+            <p class="hidden-xs">
+              <a href="{% if item.permalink %}/item/{{ item.permalink }}{% else %}/id/{{ item.id }}{% endif %}?s={{ query }}" class="">{{ item.name }}</a>
+            </p>
           </div>
         </div>
         {% endfor %}

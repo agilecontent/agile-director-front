@@ -88,7 +88,7 @@
     }
 
     Array.from(items).forEach(function(item) {
-      item.addEventListener('click', function() {
+      item.querySelector('img').addEventListener('click', function() {
         var data = {
           mediaURL: item.getAttribute('data-media-url'),
           image: item.getAttribute('data-image'),
