@@ -6,7 +6,7 @@
   {% block before_content %}
     <div class="container">
       <div class="before-content row">
-        <div class="col-md-12" style="padding-left: 0;">
+        <div class="col-md-12">
           <div id="custom-search-input">
             <form action="/catalog" method="GET">
               <div class="input-group col-md-12">
@@ -20,7 +20,7 @@
             </form>
           </div>
         </div>
-        <div class="col-md-offset-2">
+        <div class="col-md-offset-2 col-md-10">
           {% include "basic/create-video.html.twig" %}
           <div class="clearfix"></div>
         </div>
@@ -32,8 +32,7 @@
 {% block content %}
 <div class="container">
   <div class="row">
-
-    <div class="col-md-2" style="padding-left: 0;">
+    <div class="col-md-2">
       {% for val in (aggregations | sortObject('position', 'desc')) %}
       <div class="">
         <h5 style="margin-bottom: 5px;"><strong style="color: #337ab7;">{{ aggregations[val.key].title }}</strong></h5>
