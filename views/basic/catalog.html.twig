@@ -2,31 +2,30 @@
   {% extends "basic/layout.html.twig" %}
   {% block title %}{% endblock %}
   {% block description %}{% endblock %}
-{% endif %}
 
-{% block before_content %}
-<div class="before-content row">
-  <div class="col-md-12" style="padding-left: 0;">
-    <div id="custom-search-input">
-      <form action="/catalog" method="GET">
-        <div class="input-group col-md-12">
-          <input type="text" id="main_query" class="form-control input-lg" name="query" value="{{ query }}" placeholder="Search items.." />
-          <span class="input-group-btn">
+  {% block before_content %}
+    <div class="before-content row">
+      <div class="col-md-12" style="padding-left: 0;">
+        <div id="custom-search-input">
+          <form action="/catalog" method="GET">
+            <div class="input-group col-md-12">
+              <input type="text" id="main_query" class="form-control input-lg" name="query" value="{{ query }}" placeholder="Search items.." />
+              <span class="input-group-btn">
             <button class="btn btn-info btn-lg" type="button">
               <i class="glyphicon glyphicon-search"></i>
             </button>
           </span>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
+      <div class="col-md-offset-2">
+        {% include "basic/create-video.html.twig" %}
+        <div class="clearfix"></div>
+      </div>
     </div>
-  </div>
-  <div class="col-md-offset-2">
-    {% include "basic/create-video.html.twig" %}
-    <div class="clearfix"></div>
-  </div>
-</div>
-{% endblock %}
-
+  {% endblock %}
+{% endif %}
 
 {% block content %}
 <div class="container">
