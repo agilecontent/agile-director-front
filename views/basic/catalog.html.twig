@@ -29,6 +29,8 @@
   {% endblock %}
 
   {% block before_body_end %}
+    {#<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>#}
+    {% include "general/autocomplete.html.twig" ignore missing %}
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var createVideoGrid = document.querySelector('#create-video ul');
@@ -283,10 +285,4 @@
 
 {% block before_head_end %}
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/start/jquery-ui.css" />
-{% endblock %}
-
-{% block before_body_end %}
-{#<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>#}
-{% include "general/autocomplete.html.twig" ignore missing %}
-
 {% endblock %}
