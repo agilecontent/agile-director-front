@@ -59,10 +59,9 @@
   </div>
 </nav>
 
-
+{% block before_content %}
+{% endblock %}
 <div class="container">
-  {% block before_content %}
-  {% endblock %}
   <div id="content">
     {% block content %}
     {% endblock %}
