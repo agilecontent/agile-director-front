@@ -4,9 +4,7 @@
   {% block description %}{% endblock %}
 {% endif %}
 
-{% block content %}
-
-  <div class="container">
+<div class="container">
   <div class="row">
     <div class="col-md-12" style="padding-left: 0;">
       <div id="custom-search-input">
@@ -25,6 +23,17 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-2">
+      {% include "basic/create-video.html.twig" %}
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
+
+
+{% block content %}
 <div class="container">
   <div class="row">
 
@@ -85,10 +94,6 @@
         </span>
         {% endif %}
       </div>
-
-      <div class="clearfix"></div>
-
-      {% include "basic/create-video.html.twig" %}
 
       <div class="clearfix"></div>
 
