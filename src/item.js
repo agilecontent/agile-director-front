@@ -16,6 +16,7 @@ if ($rows) {
     });
 }
 
+/*
 var builder = $('#builder');
 if (builder) {
     builder.queryBuilder({
@@ -85,7 +86,9 @@ if (builder) {
         rule.$el.find('.rule-value-container input.form-control').val(previous_value[rule.id])
     });
 }
+*/
 
+/*
 var searchParam = $.url().param('s');
 if (searchParam) {
     if (searchParam.indexOf('[') >= 0) {
@@ -195,6 +198,7 @@ function search() {
         }
     }
 }
+*/
 
 function seek(time) {
     var media = document.getElementById('media');
