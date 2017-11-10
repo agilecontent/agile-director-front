@@ -27,152 +27,6 @@
       </div>
     </div>
   {% endblock %}
-
-  {% block before_body_end %}
-    {#<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>#}
-    {% include "general/autocomplete.html.twig" ignore missing %}
-    <script>
-      var createVideoGrid = document.querySelector('#create-video ul');
-      var items = document.querySelectorAll('#assets-to-choose .item');
-      var advancedOptions = document.querySelector('#advanced');
-      var createVideoAction = document.querySelector('#create-video-action');
-
-      // Toggle advanced
-      advancedOptions.addEventListener('click', function() {
-        createVideoGrid.classList.toggle('show-config');
-      });
-
-      function onRemoveItem(event) {
-        var itemHasBeenRemoved = false;
-        var removingItem = event.currentTarget;
-
-        Array.from(createVideoGrid.children).forEach(function(item) {
-          if(item.querySelector('.content') === removingItem) {
-            createVideoGrid.removeChild(removingItem.closest('li'));
-            itemHasBeenRemoved = true;
-          } else if (itemHasBeenRemoved) {
-            // Update next items order
-            var nextItemOrder = item.querySelector('.order');
-            var currentIndex = nextItemOrder.innerHTML;
-            nextItemOrder.innerHTML = parseInt(currentIndex) - 1;
-          }
-        });
-      }
-
-      function createEl (el) {
-        return document.createElement(el);
-      }
-
-      // Create the main element with the specific data
-      function createElementStructure (item) {
-        var li = createEl('li');
-        var img = createEl('img');
-        var order = createEl('span');
-        var orderNumber = createEl('span');
-        var container = createEl('div');
-        var removeItem = createEl('span');
-
-        // Add data and content
-        li.setAttribute('data-media-url', item.mediaURL);
-        li.setAttribute('data-image', item.image);
-        li.setAttribute('data-type', item.type);
-        img.src = item.image;
-        orderNumber.innerHTML = item.order;
-        removeItem.innerHTML = 'x';
-
-        // Add classes
-        li.className = 'col-sm-3 col-md-3 col-xs-6';
-        container.className = 'content';
-        img.className = 'img-responsive';
-        orderNumber.className = 'order';
-        removeItem.className = 'remove-item';
-
-        // Put elements together
-        order.append(orderNumber, removeItem);
-        container.append(img, order);
-        li.append(container);
-
-        container.addEventListener('click', onRemoveItem);
-
-        return li;
-      }
-
-      // Create the configuration inputs for te element
-      function createConfigElements () {
-        var container = createEl('div');
-        var duration = createEl('input');
-        var text = createEl('input');
-        var textDuration = createEl('input');
-
-        // Add classes
-        container.className = 'config';
-        duration.className = 'duration';
-        text.className = 'object-text';
-        textDuration.className = 'text-duration';
-
-        // Placeholders
-        duration.placeholder = 'Duration';
-        text.placeholder = 'Text';
-        textDuration.placeholder = 'Text duration';
-
-        container.append(duration, text, textDuration);
-
-        return container;
-      }
-
-      Array.from(items).forEach(function(item) {
-        item.querySelector('.item-thumb-container').addEventListener('click', function() {
-          var data = {
-            mediaURL: item.getAttribute('data-media-url'),
-            image: item.getAttribute('data-image'),
-            order: createVideoGrid.children.length + 1,
-            type: item.getAttribute('data-type')
-          };
-
-          var element = createElementStructure(data);
-          element.append(createConfigElements());
-
-          // Inject to the list
-          createVideoGrid.append(element);
-        });
-      });
-
-      function extractItemData (item) {
-        return {
-          http: item.getAttribute('data-media-url'),
-          type: item.getAttribute('data-type'),
-          textDuration: item.querySelector('.text-duration').value,
-          text: item.querySelector('.object-text').value,
-          duration: item.querySelector('.duration').value
-        };
-      }
-      createVideoAction.addEventListener('click', function() {
-        var itemsData = [];
-
-        // Get data from each video item
-        Array.from(createVideoGrid.children).forEach(function(item) {
-          itemsData.push(extractItemData(item));
-        });
-
-        if(itemsData.length) {
-          fetch("/new-video", {
-            method: "POST",
-            headers: {
-              'Accept': 'application/json, text/plain, */*',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              name: document.querySelector('#create-video input.video-name').value,
-              description: document.querySelector('#create-video input.video-description').value,
-              items: itemsData
-            })
-          }).then(function() {
-            window.location = window.location.origin + '/results'
-          });
-        }
-      });
-    </script>
-  {% endblock %}
 {% endif %}
 
 {% block content %}
@@ -283,4 +137,150 @@
 
 {% block before_head_end %}
 <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/start/jquery-ui.css" />
+{% endblock %}
+
+{% block before_body_end %}
+  {#<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>#}
+  {% include "general/autocomplete.html.twig" ignore missing %}
+  <script>
+    var createVideoGrid = document.querySelector('#create-video ul');
+    var items = document.querySelectorAll('#assets-to-choose .item');
+    var advancedOptions = document.querySelector('#advanced');
+    var createVideoAction = document.querySelector('#create-video-action');
+
+    // Toggle advanced
+    advancedOptions.addEventListener('click', function() {
+      createVideoGrid.classList.toggle('show-config');
+    });
+
+    function onRemoveItem(event) {
+      var itemHasBeenRemoved = false;
+      var removingItem = event.currentTarget;
+
+      Array.from(createVideoGrid.children).forEach(function(item) {
+        if(item.querySelector('.content') === removingItem) {
+          createVideoGrid.removeChild(removingItem.closest('li'));
+          itemHasBeenRemoved = true;
+        } else if (itemHasBeenRemoved) {
+          // Update next items order
+          var nextItemOrder = item.querySelector('.order');
+          var currentIndex = nextItemOrder.innerHTML;
+          nextItemOrder.innerHTML = parseInt(currentIndex) - 1;
+        }
+      });
+    }
+
+    function createEl (el) {
+      return document.createElement(el);
+    }
+
+    // Create the main element with the specific data
+    function createElementStructure (item) {
+      var li = createEl('li');
+      var img = createEl('img');
+      var order = createEl('span');
+      var orderNumber = createEl('span');
+      var container = createEl('div');
+      var removeItem = createEl('span');
+
+      // Add data and content
+      li.setAttribute('data-media-url', item.mediaURL);
+      li.setAttribute('data-image', item.image);
+      li.setAttribute('data-type', item.type);
+      img.src = item.image;
+      orderNumber.innerHTML = item.order;
+      removeItem.innerHTML = 'x';
+
+      // Add classes
+      li.className = 'col-sm-3 col-md-3 col-xs-6';
+      container.className = 'content';
+      img.className = 'img-responsive';
+      orderNumber.className = 'order';
+      removeItem.className = 'remove-item';
+
+      // Put elements together
+      order.append(orderNumber, removeItem);
+      container.append(img, order);
+      li.append(container);
+
+      container.addEventListener('click', onRemoveItem);
+
+      return li;
+    }
+
+    // Create the configuration inputs for te element
+    function createConfigElements () {
+      var container = createEl('div');
+      var duration = createEl('input');
+      var text = createEl('input');
+      var textDuration = createEl('input');
+
+      // Add classes
+      container.className = 'config';
+      duration.className = 'duration';
+      text.className = 'object-text';
+      textDuration.className = 'text-duration';
+
+      // Placeholders
+      duration.placeholder = 'Duration';
+      text.placeholder = 'Text';
+      textDuration.placeholder = 'Text duration';
+
+      container.append(duration, text, textDuration);
+
+      return container;
+    }
+
+    Array.from(items).forEach(function(item) {
+      item.querySelector('.item-thumb-container').addEventListener('click', function() {
+        var data = {
+          mediaURL: item.getAttribute('data-media-url'),
+          image: item.getAttribute('data-image'),
+          order: createVideoGrid.children.length + 1,
+          type: item.getAttribute('data-type')
+        };
+
+        var element = createElementStructure(data);
+        element.append(createConfigElements());
+
+        // Inject to the list
+        createVideoGrid.append(element);
+      });
+    });
+
+    function extractItemData (item) {
+      return {
+        http: item.getAttribute('data-media-url'),
+        type: item.getAttribute('data-type'),
+        textDuration: item.querySelector('.text-duration').value,
+        text: item.querySelector('.object-text').value,
+        duration: item.querySelector('.duration').value
+      };
+    }
+    createVideoAction.addEventListener('click', function() {
+      var itemsData = [];
+
+      // Get data from each video item
+      Array.from(createVideoGrid.children).forEach(function(item) {
+        itemsData.push(extractItemData(item));
+      });
+
+      if(itemsData.length) {
+        fetch("/new-video", {
+          method: "POST",
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: document.querySelector('#create-video input.video-name').value,
+            description: document.querySelector('#create-video input.video-description').value,
+            items: itemsData
+          })
+        }).then(function() {
+          window.location = window.location.origin + '/results'
+        });
+      }
+    });
+  </script>
 {% endblock %}
