@@ -1,0 +1,25 @@
+{
+  "short_name": "VIDCLOUD",
+  "name": "VIDCLOUD",
+  "icons": [
+    {
+      "src": "/img/ctv.jpg",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/ctv.jpg",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/ctv.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#2196F3",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "landscape"
+}
