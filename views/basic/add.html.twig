@@ -25,12 +25,23 @@
               <form class="form-horizontal" id="add" action="/add" method="POST">
                 <fieldset>
                   <div class="form-group">
-                    <label class="col-md-3 control-label" for="type">Media Type</label>
+                    <label class="col-md-3 control-label" for="typo">Media Type</label>
                     <div class="col-md-3">
                       <select class="form-control" name="typo" id="typo" required>
                         <option value="video">YouTube Video</option>
                         <option value="audio">Audio</option>
                         <option value="image">Image</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group hidden" id="audio-filter-container">
+                    <label class="col-md-3 control-label" for="audio-filter">Audio filter</label>
+                    <div class="col-md-4">
+                      <select class="form-control" name="audio-filter" id="audio-filter">
+                        <option selected disabled>Select an audio filter</option>
+                        <option value="background-noise">Background noise</option>
+                        <option value="phone-noise">Fix Phone audio</option>
                       </select>
                     </div>
                   </div>
@@ -110,6 +121,18 @@
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js'></script>
   <script src="/libs/jquery.tagsinput/src/jquery.tagsinput.js"></script>
   <script>
+    const assetTypeField = document.querySelector('#typo');
+    const audioFilterContainer = document.querySelector('#audio-filter-container');
+
+    assetTypeField.addEventListener('change', function(e) {
+      const fieldValue = e.target.value;
+
+      if(fieldValue === 'audio') {
+        audioFilterContainer.classList.remove('hidden');
+      } else {
+        audioFilterContainer.classList.add('hidden');
+      }
+    });
   {% for field in ['tags'] %}
     $('#{{ field }}').tagsInput({
       width: '100%',
