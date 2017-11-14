@@ -71,6 +71,14 @@
                       </ul>
                     </div>
                   {% endif %}
+                  {% if item.metas|length %}
+                    <div id="metas">
+                      <h4>METADATA</h4>
+                      <div>
+                        <span>{{ item.metas }}</span>
+                      </div>
+                    </div>
+                  {% endif %}
                 </aside>
             </div>
             <div class="col-sm-6">
