@@ -339,7 +339,7 @@ module.exports = function (app) {
 
     var getItemAsync;
     var item;
-    var id = req.params.id
+    var id = req.params.id;
 
     if (req.params.id) {
       getItemAsync = req.client.getItem(req.params.id)
@@ -348,8 +348,9 @@ module.exports = function (app) {
     }
 
     return getItemAsync
-      .then(function (result) {
-        item = result;
+      .then(function (item) {
+        console.log('---ITEM');
+        console.log(item);
 
         if (item.id) {
           id = item.id
