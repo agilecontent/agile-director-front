@@ -107,7 +107,7 @@
             </div>
         </div>
 
-      {% if similar %}
+      {% if similar|length %}
         <div class="container" style="margin-top: 40px;">
             <div class="row">
                 <h4>{{ item.name }} - similar items (by {{ settings.recommendation_field }})</h4>
