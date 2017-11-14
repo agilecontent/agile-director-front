@@ -384,7 +384,6 @@ module.exports = function (app) {
         return res.render('basic/item', {
           item: item,
           id: id,
-          tags: 9,
           similar: similar.data.items.slice(0, 4)
         });
       })
