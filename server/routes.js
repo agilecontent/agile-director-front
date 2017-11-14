@@ -348,7 +348,8 @@ module.exports = function (app) {
     }
 
     return getItemAsync
-      .then(function (item) {
+      .then(function (result) {
+        item = result;
         console.log('---ITEM');
         console.log(item);
 
