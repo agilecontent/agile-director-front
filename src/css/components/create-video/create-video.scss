@@ -26,6 +26,10 @@
       min-width: 100%;
       -o-object-fit: cover;
       object-fit: cover;
+
+      @media (max-width: 600px) {
+        height: 100px;
+      }
     }
 
     &:first-child {

@@ -38,13 +38,13 @@
         <h5 style="margin-bottom: 5px;"><strong style="color: #337ab7;">{{ aggregations[val.key].title }}</strong></h5>
         <ul class="browse-list list-unstyled long-list" style="margin-bottom: 0;">
           {% for term in aggregations[val.key].buckets %}
-          <li ng-repeat="bucket in agg.buckets">
-          <div class="checkbox block" style="margin-top: 0; margin-bottom: 0;">
-            <label>
-              <input class="checkbox" type="checkbox" {% if (filter and filter.val == term.key and filter.key == val.key) or in_array(term.key, filters[val.key]) %}checked="checked"{% endif %} onclick="onAggregationClick(this, '{{aggregations[val.key].name}}', '{{ term.key }}');">
-              {{ term.key }} ({{ term.doc_count }})
-            </label>
-          </div>
+          <li>
+            <div class="checkbox block" style="margin-top: 0; margin-bottom: 0;">
+              <label>
+                <input class="checkbox" type="checkbox" {% if (filter and filter.val == term.key and filter.key == val.key) or in_array(term.key, filters[val.key]) %}checked="checked"{% endif %} onclick="onAggregationClick(this, '{{aggregations[val.key].name}}', '{{ term.key }}');">
+                {{ term.key }} ({{ term.doc_count }})
+              </label>
+            </div>
           </li>
           {% endfor %}
         </ul>

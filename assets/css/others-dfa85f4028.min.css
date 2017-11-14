@@ -84,7 +84,7 @@
   height:200px;
   min-width:100%;
   -o-object-fit:cover;
-  object-fit:cover;
+  object-fit:cover
 }
 #create-video li .content{
   position:relative;
@@ -170,6 +170,11 @@
 #assets-to-choose .item-thumb-container:hover .add-overlay{
   display:block;
 }
+@media (max-width: 600px){
+  #create-video li img {
+    height:100px;
+  }
+}
 
 
-/*# sourceMappingURL=../maps/css/others-47969b23c0.min.css.map */
+/*# sourceMappingURL=../maps/css/others-dfa85f4028.min.css.map */
