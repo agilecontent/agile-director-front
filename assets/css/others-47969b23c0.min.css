@@ -42,6 +42,9 @@
   color:#333;
   font-weight:normal;
 }
+#create-video li:first-child .config .delay{
+  display:none;
+}
 #create-video ul{
   padding:0
 }
@@ -108,8 +111,8 @@
   margin-bottom:5px;
   width:100%;
 }
-#create-video li:first-child .config .delay{
-  display:none;
+#create-video li[data-type="audio"] .text-duration, #create-video li[data-type="audio"] .object-text{
+  visibility:hidden;
 }
 #advanced{
   font-size:13px;
@@ -169,4 +172,4 @@
 }
 
 
-/*# sourceMappingURL=../maps/css/others-29ebd46ec2.min.css.map */
+/*# sourceMappingURL=../maps/css/others-47969b23c0.min.css.map */
