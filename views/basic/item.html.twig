@@ -41,31 +41,26 @@
                             </div>
                         </div>
                     </div>
-                  <div id="meta">
-                    <table class="table">
-                      <thead>
-                      <tr>
-                        <th>Meta info</th>
-                        <th>Value</th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td>Duration</td>
-                        <td>13:03s</td>
-                      </tr>
-                      <tr>
-                        <td>Duration</td>
-                        <td>13:03s</td>
-                      </tr>
-                      <tr>
-                        <td>Duration</td>
-                        <td>13:03s</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
+                  {% if item.metadata|length %}
+                    <div id="meta">
+                      <table class="table">
+                        <thead>
+                        <tr>
+                          <th>Meta info</th>
+                          <th>Value</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for meta in item.metadata %}
+                          <tr>
+                            <td>{{ meta.name }}</td>
+                            <td>{{ meta.value }}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  {% endif %}
                   {% if item.tags|length %}
                     <div id="tags">
                       <h4>Tags</h4>
