@@ -362,6 +362,8 @@ module.exports = function (app) {
         return emitter.emitAsync('item.view', item, req.user)
       })
       .then(function (result) {
+        console.log('---ITEM');
+        console.log(result);
         var fields = ['tags'];
 
         if (req.settings.recommendation_field) {
@@ -380,6 +382,7 @@ module.exports = function (app) {
         return res.render('basic/item', {
           item: item,
           id: id,
+          tags: 9,
           similar: similar.data.items.slice(0, 4)
         });
       })
@@ -387,7 +390,7 @@ module.exports = function (app) {
         console.log(result);
         return res.status(404).send('Sorry cant find that!');
       })
-  })
+  });
 
   // not necessary anymore because system create that out of the box
   app.post('/add-collection', function (req, res) {
