@@ -177,7 +177,7 @@
   left:0;
   right:0;
   z-index:99999;
-  background:rgba(255,255,255,0.7);
+  background:rgba(0, 0, 0, 0.3);
   font-weight:bold
 }
 #pop-up > div {
@@ -206,4 +206,4 @@
 }
 
 
-/*# sourceMappingURL=../maps/css/others-9430744c68.min.css.map */
+/*# sourceMappingURL=../maps/css/others-71d13d2aa3.min.css.map */
