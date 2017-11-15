@@ -51,6 +51,16 @@
                       </ul>
                     </div>
                   {% endif %}
+                  {% if item.iptc|length %}
+                    <div id="tags">
+                      <h4>Tags</h4>
+                      <ul class="list-group">
+                        {% for classification in item.iptc %}
+                          <li class="list-group-item">{{ classification }}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  {% endif %}
                   {% if item.metas|length %}
                     <div id="metas">
                       <h4>METADATA</h4>

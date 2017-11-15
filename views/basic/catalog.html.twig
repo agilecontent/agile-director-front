@@ -68,7 +68,6 @@
       </ul>
       {% endif %}
 
-
       <div class="breadcrumbs">
         {% for key, val in filters %}
         {% for term in val %}
@@ -95,7 +94,12 @@
       <h3>List of items ({{pagination.total}})</h3>
       <div class="items row" id="assets-to-choose">
         {% for item in items %}
-        <div class="col-xs-4 col-md-3 item" style="margin-bottom: 30px" data-media-url="{{ item.mediaURL }}" data-image="{{ item.image }}" data-type="{{ item.typo }}">
+        <div class="col-xs-4 col-md-3 item" style="margin-bottom: 30px"
+             data-media-url="{{ item.mediaURL }}"
+             data-image="{{ item.image }}"
+             data-type="{{ item.typo }}"
+             data-processing="false"
+        >
           <div>
             <div class="item-thumb-container">
               {% if item.typo %}
