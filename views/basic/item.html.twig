@@ -74,9 +74,11 @@
                   {% if item.metas|length %}
                     <div id="metas">
                       <h4>METADATA</h4>
-                      <div>
-                        <span>{{ item.metas | JSONParse }}</span>
-                      </div>
+                      <ul class="list-group">
+                        {% for tag in item.metas | JSONParse %}
+                          <li class="list-group-item">{{ tag }}</li>
+                        {% endfor %}
+                      </ul>
                     </div>
                   {% endif %}
                 </aside>
