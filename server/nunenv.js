@@ -45,10 +45,6 @@ module.exports = function (app, path, options) {
       return JSON.stringify(json, null, 4)
     })
 
-    .addFilter('JSONParse', function (string) {
-      return JSON.parse(string)
-    })
-
     .addFilter('sortObject', function (array, field, order) {
       return _.chain(array)
         .cloneDeep()
