@@ -98,7 +98,10 @@
              data-media-url="{{ item.mediaURL }}"
              data-image="{{ item.image }}"
              data-type="{{ item.typo }}"
-             data-processing="false"
+             {% if item.uuid %}
+               data-uuid="{{ item.uuid }}"
+               data-audio-name="{{ item.output_basename }}"
+             {% endif %}
         >
           <div>
             <div class="item-thumb-container">
