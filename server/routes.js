@@ -223,7 +223,6 @@ module.exports = function (app) {
    * Create new Video
    */
   app.post('/new-video', function(req, res) {
-    console.log(req.body);
     req.client.newVideo(req.body).then(function(result) {
       res.json(result);
     });
