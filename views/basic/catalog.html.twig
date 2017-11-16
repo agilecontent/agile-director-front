@@ -202,6 +202,8 @@
       li.setAttribute('data-media-url', item.mediaURL);
       li.setAttribute('data-image', item.image);
       li.setAttribute('data-type', item.type);
+      li.setAttribute('data-uuid', item.uuid);
+      li.setAttribute('data-audio-name', item.output_basename);
       img.src = item.image;
       orderNumber.innerHTML = item.order;
       removeItem.innerHTML = 'x';
@@ -252,7 +254,9 @@
           mediaURL: item.getAttribute('data-media-url'),
           image: item.getAttribute('data-image'),
           order: createVideoGrid.children.length + 1,
-          type: item.getAttribute('data-type')
+          type: item.getAttribute('data-type'),
+          uuid: item.getAttribute('data-uuid'),
+          output_basename: item.getAttribute('data-audio-name')
         };
 
         var element = createElementStructure(data);
