@@ -43,7 +43,7 @@
                     </div>
                   {% if item.tags|length %}
                     <div id="tags">
-                      <h4>Tags</h4>
+                      <h4>Semantic Concepts</h4>
                       <ul class="list-group">
                         {% for tag in item.tags %}
                           <li class="list-group-item">{{ tag }}</li>
@@ -53,7 +53,7 @@
                   {% endif %}
                   {% if item.iptc|length %}
                     <div id="iptc">
-                      <h4>IPTC</h4>
+                      <h4>Semantic Classification</h4>
                       <ul class="list-group">
                         {% for classification in item.iptc %}
                           <li class="list-group-item">{{ classification }}</li>
@@ -63,7 +63,7 @@
                   {% endif %}
                   {% if item.metas|length %}
                     <div id="metas">
-                      <h4>METADATA</h4>
+                      <h4>Technical Metadata</h4>
                       <div>
                         <span>{{ item.metas }}</span>
                       </div>
@@ -78,7 +78,8 @@
                             <div class="col-md-12">
                                 <div class="table-wrapper">
                                     <table id="transcript" class="table table-striped">
-                                        <tbody>
+                                      <thead><tr>Synchronous Transcription</tr></thead>
+                                       <tbody>
                                         {% for transcript in item.transcript %}
                                             <tr>
                                                 <td>
