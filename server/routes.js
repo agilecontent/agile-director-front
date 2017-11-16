@@ -211,6 +211,7 @@ module.exports = function (app) {
   /**
    * display video results
    */
+  /*
   app.get('/results', function(req, res) {
     req.client.results().then(function(videoResults) {
       res.render('basic/results', {
@@ -218,6 +219,7 @@ module.exports = function (app) {
       });
     });
   });
+  */
 
   /**
    * Create new Video
